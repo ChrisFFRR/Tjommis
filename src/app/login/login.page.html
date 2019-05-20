@@ -13,29 +13,39 @@
       <ion-col text-center>
         <form [formGroup]="loginFormGroup">
           <ion-item class="login_user login_input">
-            <ion-label floating>Username</ion-label>
+            <ion-label position="floating">Username</ion-label>
             <ion-input formControlName="username" type="text" value=""></ion-input>
           </ion-item>
-          <ion-item *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)">
+
+          <ion-item>
+            <ion-label *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)"> </ion-label>
             <p>Please enter a valid name.</p>
           </ion-item>
 
+
+
           <ion-item class="login_pass login_input">
-            <ion-label floating>Password</ion-label>
+            <ion-label position="floating">Password</ion-label>
             <ion-input formControlName="password"  type="password" value="" ></ion-input>
           </ion-item>
-          <ion-item *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)">
+
+
+          <ion-item>
+            <ion-label *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)"></ion-label>
             <p>Please enter a valid password.</p>
           </ion-item>
+
         </form>
+
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
         <ion-button size="large" fill="outline" (click)="login()">Logg inn</ion-button>
-        <button ion-button color="warning" (click)="register()">Registrer</button>
+        <ion-button ion-button color="warning" (click)="register()">Registrer</ion-button>
       </ion-col>
     </ion-row>
+
     <ion-row>
       <ion-col text-center>
         <ion-chip *ngIf="submitAttempt && !loginFormGroup.valid || displayError" color="danger">
@@ -46,6 +56,5 @@
         </ion-chip>
       </ion-col>
     </ion-row>
-
   </ion-grid>
 </ion-content>
