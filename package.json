@@ -42,6 +42,7 @@
     "@aspnet/signalr": "latest",
     "@ionic/angular-toolkit": "~1.5.1",
     "@ionic/app-scripts": "^3.2.3",
+    "@ionic/lab": "1.0.24",
     "@ionic/v4-migration-tslint": "^1.7.1",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
