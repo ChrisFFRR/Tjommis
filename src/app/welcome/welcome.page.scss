@@ -27,22 +27,13 @@ ion-content {
   }
 
   .btn_videre {
-    line-height: 1.5;
-    margin: 0;
-    top: 80px;
     width: 200px;
-    border-radius: 20px;
     --background: var(--ion-color-secondary-contrast);
     --border-color: var(--ion-color-border);
     --border-style: solid;
     --border-width: 2px;
+    --color: #8C56A7;
   }
-
-  .btn_videre_txt {
-    font-weight: bold;
-    color: #8C56A7;
-  }
-
   .txt_login_info {
     font-size: 8px;
   }
