@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {TjommisHubService} from "../services/tjommis-hub.service";
+import {Events} from "@ionic/angular";
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +10,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(
+      public router: Router,
+      public tjommisHub: TjommisHubService,
+      public events: Events,
+      private zone: NgZone) {
 
-  ngOnInit() {
+    this.events.subscribe('randomNumber', (data) => {
+      this.onUpdateRandomNumber(data);
+    });
+
+    this.events.subscribe('connectedusers', (data) => {
+      this.onUpdateConnectedUsers(data);
+    });
+    this.events.subscribe('username', (data) => {
+      this.onUpdateUsername(data);
+    });
   }
 
+  username: string = this.tjommisHub.username;
+  randomNumber: number;
+  connectedUsers: number;
+
+  onUpdateRandomNumber = number => {
+    this.zone.run(() => {
+      this.randomNumber = number;
+    });
+  };
+
+  onUpdateConnectedUsers = number => {
+    this.zone.run(() => {
+      this.connectedUsers = number;
+    });
+  };
+
+    onUpdateUsername = username => {
+      this.zone.run(() => {
+        this.username = username;
+      });
+    };
+
+  ngOnInit() {
+
+  }
+
+  interesser() {
+    this.router.navigateByUrl('/interesser')
+  }
+
+  chat() {
+    this.router.navigateByUrl('/chat')
+  }
+
+  settings() {
+    this.router.navigateByUrl('/settings')
+  }
 }

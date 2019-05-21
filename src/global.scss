@@ -11,6 +11,9 @@
 @import '~@ionic/angular/css/flex-utils.css';
 
 
+#background_color {
+  --ion-background-color: linear-gradient(to bottom,  #3023AE 0%,#A362A5 100%);
+}
 
 
 /*@font-face {

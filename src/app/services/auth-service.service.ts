@@ -27,7 +27,6 @@ export class AuthServiceService {
                     if (res.status === 200) {
                         console.log(res);
                         this.loginToken = res.json().access_token;
-                        debugger;
                         return resolve(this.loginToken);
 
                     } else {
