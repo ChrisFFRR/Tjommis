@@ -32,7 +32,10 @@ ion-content {
     top: 80px;
     width: 200px;
     border-radius: 20px;
-    --background: var(--ion-color-secondary-contrast)
+    --background: var(--ion-color-secondary-contrast);
+    --border-color: var(--ion-color-border);
+    --border-style: solid;
+    --border-width: 2px;
   }
 
   .btn_videre_txt {
