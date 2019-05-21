@@ -18,8 +18,9 @@
           </ion-item>
 
           <ion-item>
-            <ion-label *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)"> </ion-label>
+            <div *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)">
             <p>Please enter a valid name.</p>
+            </div>
           </ion-item>
 
 
@@ -31,8 +32,9 @@
 
 
           <ion-item>
-            <ion-label *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)"></ion-label>
+            <div *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)">
             <p>Please enter a valid password.</p>
+            </div>
           </ion-item>
 
         </form>

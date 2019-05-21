@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http} from '@angular/http';
+import {HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
+
 
 const apiUrl = '/token';
 
@@ -24,7 +27,9 @@ export class AuthServiceService {
                     if (res.status === 200) {
                         console.log(res);
                         this.loginToken = res.json().access_token;
+                        debugger;
                         return resolve(this.loginToken);
+
                     } else {
                         console.log('Unknown error', res);
                         return reject(res.json().error);

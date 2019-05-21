@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class LoginPage implements OnInit {
     public statusMessage: string = "";
     displayError: boolean = false;
-    loginFormGroup: FormGroup;
+    public loginFormGroup: FormGroup;
     submitAttempt: boolean = false;
     username: string = "";
     password: string = "";
@@ -43,7 +43,6 @@ export class LoginPage implements OnInit {
 
         //need to pass this value somehow
         //let affiliation = this.loginFormGroup.controls["affiliation"].value;
-
         this.authService.login({username: this.loginFormGroup.controls["username"].value, password: this.loginFormGroup.controls["password"].value})
             .then(response=> {
                     this.statusMessage = "Logging inn...";
