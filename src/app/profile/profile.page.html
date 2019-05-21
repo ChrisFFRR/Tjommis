@@ -1,13 +1,13 @@
 <ion-header no-border>
 
-  <ion-navbar transparent>
-    <ion-buttons end>
+  <ion-toolbar transparent>
+    <ion-buttons slot="primary">
       <button  class="hamburger_menu" (click)="settings()">
 
         <img src="assets/icon/hamburger_btn.svg">
       </button>
     </ion-buttons>
-  </ion-navbar>
+  </ion-toolbar>
 
 </ion-header>
 
@@ -56,7 +56,7 @@
 
   <ion-grid class="btn_row_grid">
     <ion-row class="btn_row">
-      <ion-col col-3 text-center>
+      <ion-col size="3" text-center>
 
         <button class="interesse_btn" (click)="interesser()"><p class="interesse_btn_txt">interesser</p>
           <img src="assets/icon/interesse_btn.svg">
@@ -107,7 +107,7 @@
           </svg>
         </button>
       </ion-col>
-      <ion-col col-3>
+      <ion-col size="3">
 
       </ion-col>
     </ion-row>

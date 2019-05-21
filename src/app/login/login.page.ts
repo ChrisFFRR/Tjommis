@@ -49,8 +49,7 @@ export class LoginPage implements OnInit {
                     this.tjommisHub.connect(this.authService.loginToken).then(
                         () => {
                             this.statusMessage = "";
-                            //fixxxxx it
-                            this.router.navigate(['/profile']);
+                            this.router.navigateByUrl('/profile');
                         },
                         rejected => {
                             console.log("Could not connect: " ,rejected)

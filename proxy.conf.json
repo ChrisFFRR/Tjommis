@@ -1,0 +1,11 @@
+{
+  "/token": {
+    "target": "https://smidigprosjekt.azurewebsites.net/token",
+    "secure": true,
+    "pathRewrite": {
+      "^/token": ""
+    },
+    "changeOrigin": true
+  },
+  "logLevel": "debug"
+}
