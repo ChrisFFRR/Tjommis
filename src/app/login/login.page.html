@@ -2,61 +2,64 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row class="logo_header">
-      <ion-col text-center>
-        <img alt="company_logo" src="../../assets/imgs/logoalenegul.png" height="200px">
-      </ion-col>
-    </ion-row>
+    <ion-grid>
+        <ion-row class="logo_header">
+            <ion-col text-center>
+                <img alt="company_logo" src="../../assets/imgs/logoalenegul.png" height="200px">
+            </ion-col>
+        </ion-row>
 
-    <ion-row class="login_form">
-      <ion-col text-center>
-        <form [formGroup]="loginFormGroup">
-          <ion-item class="login_user login_input">
-            <ion-label position="floating">Username</ion-label>
-            <ion-input formControlName="username" type="text" value=""></ion-input>
-          </ion-item>
+        <ion-row class="login_form">
+            <ion-col text-center>
+                <form [formGroup]="loginFormGroup">
+                    <ion-item class="login_user login_input">
+                        <ion-label position="floating">Username</ion-label>
+                        <ion-input formControlName="username" type="text" value=""></ion-input>
+                    </ion-item>
 
-          <ion-item>
-            <div *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)">
-            <p>Please enter a valid name.</p>
-            </div>
-          </ion-item>
-
-
-
-          <ion-item class="login_pass login_input">
-            <ion-label position="floating">Password</ion-label>
-            <ion-input formControlName="password"  type="password" value="" ></ion-input>
-          </ion-item>
+                    <ion-item>
+                        <ion-label>
+                            <div *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)">
+                                <p>Please enter a valid name.</p>
+                            </div>
+                        </ion-label>
+                    </ion-item>
 
 
-          <ion-item>
-            <div *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)">
-            <p>Please enter a valid password.</p>
-            </div>
-          </ion-item>
+                    <ion-item class="login_pass login_input">
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input formControlName="password" type="password" value=""></ion-input>
+                    </ion-item>
 
-        </form>
 
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col text-center>
-        <ion-button size="large" fill="outline" (click)="login()">Logg inn</ion-button>
-        <ion-button ion-button color="warning" (click)="register()">Registrer</ion-button>
-      </ion-col>
-    </ion-row>
+                    <ion-item>
+                        <ion-label>
+                            <div *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)">
+                                <p>Please enter a valid password.</p>
+                            </div>
+                        </ion-label>
+                    </ion-item>
 
-    <ion-row>
-      <ion-col text-center>
-        <ion-chip *ngIf="submitAttempt && !loginFormGroup.valid || displayError" color="danger">
-          <ion-label>{{errorMessage}}</ion-label>
-        </ion-chip>
-        <ion-chip *ngIf="submitAttempt && statusMessage != ''" color="secondary">
-          <ion-label>{{statusMessage}}</ion-label>
-        </ion-chip>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+                </form>
+
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <ion-button size="large" fill="outline" (click)="login()">Logg inn</ion-button>
+                <ion-button color="warning" (click)="register()">Registrer</ion-button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col text-center>
+                <ion-chip *ngIf="submitAttempt && !loginFormGroup.valid || displayError" color="danger">
+                    <ion-label>{{errorMessage}}</ion-label>
+                </ion-chip>
+                <ion-chip *ngIf="submitAttempt && statusMessage != ''" color="secondary">
+                    <ion-label>{{statusMessage}}</ion-label>
+                </ion-chip>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
