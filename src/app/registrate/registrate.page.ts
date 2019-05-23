@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { AuthServiceService } from "../services/auth-service.service";
 import { TjommisHubService } from "../services/tjommis-hub.service";
+import { ToastController } from '@ionic/angular';
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from "@angular/router";
 })
 export class RegistratePage implements OnInit {
   public statusMessage: string = "";
-  displayError: boolean = false;
+  //displayError: boolean = false;
 
   username: string = "";
   lastName: string = "";
@@ -21,28 +22,43 @@ export class RegistratePage implements OnInit {
   Studie: string[] = ["Studie 1", "Studie 2", "Studie 3"];
   selectedStudie: string;
 
+  isPosting : boolean = false;
+
   constructor(
     public router: Router,
     public authService: AuthServiceService,
-    public tjommisHub: TjommisHubService) {
+    public tjommisHub: TjommisHubService,
+    public toastController: ToastController) {
 
   }
 
   ngOnInit() {
   }
 
+  async displayError(errormessage: string) {
+    const toast = await this.toastController.create({
+      message: errormessage,
+      duration: 2000
+    });
+    toast.present();
+  }
+  
+
   register() {
+    this.isPosting = true;
+    var newUser = {
+      name: this.username,
+      lastname: this.lastName,
+      password: this.password,
+      email: this.email,
+      Institutt: this.selectedInstitutt,
+      Studie: this.selectedStudie
+    };
+    console.log("Creating user",newUser);
     fetch(this.authService.endPoint + '/api/RegisterUser', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: this.username,
-        lastname: this.lastName,
-        password: this.password,
-        email: this.email,
-        Institutt: this.selectedInstitutt,
-        selectedStudie: this.selectedStudie
-      })
+      body: JSON.stringify(newUser)
     })
       .then(_ => {
         //Sign in metode fra authservice
@@ -61,31 +77,16 @@ export class RegistratePage implements OnInit {
           },
             rejectedResponse => {
               console.log("Rejected:", rejectedResponse);
-              this.displayError = true;
+              this.displayError("Failed to logon")
               this.statusMessage = rejectedResponse;
             });
 
       })
-      .catch(_ => {
-        console.log("Could not create user ");
+      .catch(err => {
+        console.log(err);
+        this.displayError("Could not create user");
+        this.isPosting = false;
       });
-
-
-    /*register(form){
-       fetch('https://smidigprosjekt.azurewebsites.net/RegisterUser', {
-         method: 'post',
-         headers: {'Content-Type': 'application/json'},
-         body: JSON.stringify({
-           name: this.name,
-           lastName: this.lastName,
-           password: this.password,
-           email: this.email,
-           Institutt: this.Institutt,
-           Studie: this.Studie
-         })
-       })
-   }
-   */
   }
 
 }

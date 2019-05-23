@@ -2,10 +2,10 @@
 </ion-header>
 
 <ion-content id="background_color">
-    <ion-list padding text-center >
+    <ion-list padding text-center>
         <h3 id="userText">Lag en bruker</h3>
-        <ion-item class="ion-item-border-top" >
-                <ion-label position="floating">Brukernavn</ion-label>
+        <ion-item class="ion-item-border-top">
+            <ion-label position="floating">Brukernavn</ion-label>
             <ion-input name="name" type="text" placeholder="Navn" [(ngModel)]="username"></ion-input>
         </ion-item>
         <ion-item>
@@ -21,24 +21,25 @@
         </ion-item>
         <ion-item>
             <ion-label>Institutt</ion-label>
-            <ion-select>
+            <ion-select [(ngModel)]="selectedInstitutt">
                 <ion-select-option name="School" type="text" placeholder="Institutt"
                     *ngFor="let selectedInstitutt of Institutt">{{selectedInstitutt}}
                 </ion-select-option>
             </ion-select>
         </ion-item>
-        <ion-item  class="ion-item-border-bottom">
+        <ion-item class="ion-item-border-bottom">
             <ion-label>Studie</ion-label>
-            <ion-select>
+            <ion-select [(ngModel)]="selectedStudie">
                 <ion-select-option name="Studie" type="text" placeholder="Studieretning"
                     *ngFor="let selectedStudie of Studie">{{selectedStudie}}</ion-select-option>
             </ion-select>
         </ion-item>
         <div class="center">
-        <ion-button size="large" onclick="register()">
-            <ion-icon slot="start" name="star"></ion-icon>
-            Register
-        </ion-button></div>
+            <ion-button size="large" (click)="register()" [disabled]="isPosting">
+                <ion-icon slot="start" name="star" *ngIf="!isPosting"></ion-icon>
+                <ion-spinner name="lines" *ngIf="isPosting"></ion-spinner>
+                Register
+            </ion-button>
+        </div>
     </ion-list>
-
 </ion-content>
