@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HubConnection, HubConnectionBuilder} from '@aspnet/signalr';
 import {Events} from '@ionic/angular';
+import {AuthServiceService} from "../services/auth-service.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class TjommisHubService {
     public randomNumber: number;
     public authenticated: boolean;
     public messages: string[] = ['Messages:'];
-    constructor(public events: Events) {}
+    constructor(public events: Events,
+        public authService: AuthServiceService,) {}
 
 
     SendMessage(message) {
@@ -31,8 +33,7 @@ export class TjommisHubService {
 
             // Create a new hub and connect it using accessToken from earlier
             this.hubConnection = new HubConnectionBuilder().
-            //withUrl('https://smidigprosjekt.azurewebsites.net/tjommisHub', {accessTokenFactory: () => accesstoken}).build();
-             withUrl('https://localhost:5001/tjommisHub',{accessTokenFactory: () => accesstoken}).build();
+             withUrl(this.authService.endPoint + '/tjommisHub',{accessTokenFactory: () => accesstoken}).build();
 
             // Register the callback functions (Maybe do this on component load)
             // Possibly let the components register the events directly to SignalR themselves,

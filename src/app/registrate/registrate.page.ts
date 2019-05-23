@@ -27,18 +27,17 @@ export class RegistratePage implements OnInit {
     }
 
     register(form) {
-        this.authService.register(form.value).then((res) => {
-            fetch('https://smidigprosjekt.azurewebsites.net/RegisterUser', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    name: this.name,
-                })
-            }),
-                rejected => {
-                    console.log("Could not create user " , rejected)
-                }
-        })
+        fetch(this.authService.endPoint + '/api/RegisterUser', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                name: this.name,
+            })
+          })
+          .then(_ => {})
+          .catch(_=> {
+            console.log("Could not create user ");
+            });
 
 
         /*register(form){
