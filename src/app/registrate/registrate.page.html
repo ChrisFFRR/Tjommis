@@ -1,0 +1,42 @@
+<ion-header>
+</ion-header>
+
+<ion-content id="background_color" padding>
+    <ion-card class="registercard">
+    <form #form="ngForm" (ngSubmit)="register(form)">
+        <ion-grid class ="style">
+            <ion-row color="primary" justify-content-center>
+                <ion-col  align-self-center>
+                    <div text-center>
+                        <h3 id="userText">Lag en bruker</h3>
+                    </div>
+                    <div padding>
+                        <ion-item>
+                            <ion-input  name="name" type="text" placeholder="Navn" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input  name="LastName" type="text" placeholder="Etternavn" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input name="password" type="password" placeholder="Passord" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input name="email" type="email" placeholder="Epost" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input name="School" type="text" placeholder="Institutt" ngModel required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input name="Studie" type="text" placeholder="Studieretning" ngModel required></ion-input>
+                        </ion-item>
+                    </div>
+                    <div padding>
+                        <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+    </ion-card>
+
+</ion-content>
