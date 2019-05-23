@@ -5,6 +5,7 @@ import {Events} from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TjommisHubService {
     private hubConnection: HubConnection;
     public username: string;
@@ -18,7 +19,9 @@ export class TjommisHubService {
     SendMessage(message) {
         this.hubConnection.send('SendMessage', message);
     }
-
+    Hangout() {
+        this.hubConnection.send('Hangout');
+    }
     // Connect method for SignalR
     // Returns: Promise(resolve, reject)
     connect(accesstoken) {
@@ -28,8 +31,8 @@ export class TjommisHubService {
 
             // Create a new hub and connect it using accessToken from earlier
             this.hubConnection = new HubConnectionBuilder().
-            withUrl('https://smidigprosjekt.azurewebsites.net/tjommisHub', {accessTokenFactory: () => accesstoken}).build();
-            // withUrl('https://localhost:5001/tjommisHub',{accessTokenFactory: () => accesstoken}).build();
+            //withUrl('https://smidigprosjekt.azurewebsites.net/tjommisHub', {accessTokenFactory: () => accesstoken}).build();
+             withUrl('https://localhost:5001/tjommisHub',{accessTokenFactory: () => accesstoken}).build();
 
             // Register the callback functions (Maybe do this on component load)
             // Possibly let the components register the events directly to SignalR themselves,
@@ -66,6 +69,14 @@ export class TjommisHubService {
             this.events.publish('randomNumber', randomNumber);
             console.log('randomNumber:', randomNumber);
         });
+        hubConnection.on('JoinRoom',(room: Lobby) => {
+            this.events.publish('joinRoom',room);
+        });
     }
+}
 
+export class Lobby {
+    public Id : number;
+    public Members : object[];
+    public Messages : string[];
 }

@@ -1,7 +1,7 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {TjommisHubService} from "../services/tjommis-hub.service";
 import {Events} from "@ionic/angular";
+import {TjommisHubService} from "../services/tjommis-hub.service";
 
 @Component({
   selector: 'app-profile',
@@ -60,6 +60,7 @@ export class ProfilePage implements OnInit {
 
   chat() {
     this.router.navigateByUrl('/chat')
+    this.tjommisHub.Hangout();
   }
 
   settings() {

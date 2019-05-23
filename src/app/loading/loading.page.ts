@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Events } from '@ionic/angular';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-loading',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router,
+    public events: Events
+    ) { 
+    
+   events.subscribe("joinRoom",(data) => {
+      this.router.navigateByUrl('/chat');
+    });
+  }
 
   ngOnInit() {
   }
