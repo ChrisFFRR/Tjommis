@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import { Component,NgZone, OnInit } from '@angular/core';
 import {AuthServiceService} from "../services/auth-service.service";
 
 @Component({
@@ -10,15 +9,15 @@ import {AuthServiceService} from "../services/auth-service.service";
 export class RegistratePage implements OnInit {
     public statusMessage: string = "";
     displayError: boolean = false;
-    public loginFormGroup: FormGroup;
 
-    name: String = "test";
-    lastName: String = "test";
-    password: String = "test";
-    email: String = "test";
-    Institutt: String = "test";
-    Studie: String = "test";
-
+    username: string = "test";
+    lastName: string = "test";
+    password: string = "test";
+    email: string = "test";
+    Institutt: string[] = ["Kristiania", "Skole 2", "Skole 3"];
+    selectedInstitutt: string;
+    Studie: string[] = ["Studie 1", "Studie 2", "Studie 3"];
+    selectedStudie: string;
     constructor(public  authService:  AuthServiceService) {
 
     }
@@ -26,12 +25,12 @@ export class RegistratePage implements OnInit {
     ngOnInit() {
     }
 
-    register(form) {
+    register() {
         fetch(this.authService.endPoint + '/api/RegisterUser', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                name: this.name,
+                name: this.username,
             })
           })
           .then(_ => {})
