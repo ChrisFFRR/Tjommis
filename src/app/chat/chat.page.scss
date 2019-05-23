@@ -1,0 +1,41 @@
+ion-content {
+
+}
+
+.button{
+  position: sticky;
+
+  top: 0px;
+  background: Transparent no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+
+}
+.chatheader{
+  position: relative;
+  left: 84px;
+  color: white;
+  text-shadow: 0px 2px 4px black;
+}
+.item{
+  position: relative;
+  top: 30px;
+}
+.chat{
+  position: sticky;
+  top: 550px;
+  left: 20px;
+  width: 300px;
+}
+
+.itemto{
+  position: absolute;
+  top: 10px;
+}
+
+.title{
+  position: fixed;
+  top: 50px;
+  left: 150px;
+}

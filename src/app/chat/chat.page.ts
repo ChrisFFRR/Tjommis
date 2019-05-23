@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {TjommisHubService} from "../services/tjommis-hub.service";
+import {Events} from "@ionic/angular";
 
 @Component({
   selector: 'app-chat',
@@ -7,7 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatPage implements OnInit {
 
-  constructor() { }
+  message: string;
+  public messages: string[] = this.tjommisHub.messages;
+
+  constructor(
+      public router: Router,
+      public tjommisHub: TjommisHubService,
+      public events: Events,
+      private zone: NgZone
+  ) {
+    events.subscribe("message",(data) => {
+      this.onAddMessage(data);
+    });
+  }
+
+  private onAddMessage = message => {
+    this.zone.run(() => {
+      this.messages = this.tjommisHub.messages;
+    })
+  };
+
+  handleSendMessage() {
+    this.tjommisHub.SendMessage(this.message);
+    this.message = "";
+  }
+
+  toHome() {
+    this.router.navigateByUrl('/profile')
+  }
 
   ngOnInit() {
   }
