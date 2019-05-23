@@ -1,52 +1,44 @@
 <ion-header>
 </ion-header>
 
-<ion-content id="background_color" padding>
-    <ion-card class="registercard">
-
-        <ion-grid class="style">
-            <ion-row color="primary" justify-content-center>
-                <ion-col align-self-center>
-                    <div text-center>
-                        <h3 id="userText">Lag en bruker</h3>
-                    </div>
-                    <div padding>
-                        <ion-item>
-                            <ion-input name="name" type="text" placeholder="Navn" [(ngModel)]="username"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-input name="LastName" type="text" placeholder="Etternavn" [(ngModel)]="lastName">
-                            </ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-input name="password" type="password" placeholder="Passord" [(ngModel)]="password">
-                            </ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-input name="email" type="email" placeholder="Epost" [(ngModel)]="email"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Institutt</ion-label>
-                            <ion-select>
-                                <ion-select-option name="School" type="text" placeholder="Institutt"
-                                    *ngFor="let selectedInstitutt of Institutt">{{selectedInstitutt}}
-                                </ion-select-option>
-                            </ion-select>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Studie</ion-label>
-                            <ion-select>
-                                <ion-select-option name="Studie" type="text" placeholder="Studieretning"
-                                    *ngFor="let selectedStudie of Studie">{{selectedStudie}}</ion-select-option>
-                            </ion-select>
-                        </ion-item>
-                    </div>
-                    <div padding>
-                        <ion-button size="large" onclick="register()">Register</ion-button>
-                    </div>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-card>
+<ion-content id="background_color">
+    <ion-list padding text-center >
+        <h3 id="userText">Lag en bruker</h3>
+        <ion-item class="ion-item-border-top" >
+                <ion-label position="floating">Brukernavn</ion-label>
+            <ion-input name="name" type="text" placeholder="Navn" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input name="LastName" type="text" placeholder="Etternavn" [(ngModel)]="lastName">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input name="password" type="password" placeholder="Passord" [(ngModel)]="password">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input name="email" type="email" placeholder="Epost" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Institutt</ion-label>
+            <ion-select>
+                <ion-select-option name="School" type="text" placeholder="Institutt"
+                    *ngFor="let selectedInstitutt of Institutt">{{selectedInstitutt}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item  class="ion-item-border-bottom">
+            <ion-label>Studie</ion-label>
+            <ion-select>
+                <ion-select-option name="Studie" type="text" placeholder="Studieretning"
+                    *ngFor="let selectedStudie of Studie">{{selectedStudie}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <div class="center">
+        <ion-button size="large" onclick="register()">
+            <ion-icon slot="start" name="star"></ion-icon>
+            Register
+        </ion-button></div>
+    </ion-list>
 
 </ion-content>
