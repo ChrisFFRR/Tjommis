@@ -55,6 +55,7 @@ export class RegistratePage implements OnInit {
       Studie: this.selectedStudie
     };
     console.log("Creating user",newUser);
+
     fetch(this.authService.endPoint + '/api/RegisterUser', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },

@@ -17,13 +17,12 @@
                         <ion-input formControlName="username" type="text" value=""></ion-input>
                     </ion-item>
                     <div *ngIf="(!loginFormGroup.controls.username.valid)  && (loginFormGroup.controls.username.dirty || submitAttempt)">
-                        <ion-item >
+                        <ion-item>
                             <ion-label>
                                 <p>Please enter a valid name.</p>
                             </ion-label>
                         </ion-item>
                     </div>
-
 
                     <ion-item class="login_input">
                         <ion-label position="floating">Password</ion-label>
@@ -36,18 +35,19 @@
                             </ion-label>
                         </ion-item>
                     </div>
-
                 </form>
-
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col text-center>
                 <ion-button class="btn login" size="large" fill="outline" (click)="login()">Logg inn</ion-button>
-                <ion-button class="btn register" (click)="register()">Registrer</ion-button>
             </ion-col>
         </ion-row>
-
+        <ion-row>
+            <ion-col class="register_col" >
+                <h3 text-center class="register" (click)="register()">registrer</h3>
+            </ion-col>
+        </ion-row>
         <ion-row>
             <ion-col text-center>
                 <ion-chip *ngIf="submitAttempt && !loginFormGroup.valid || displayError" color="danger">
