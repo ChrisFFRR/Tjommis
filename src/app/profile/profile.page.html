@@ -19,78 +19,85 @@
                 <p class="lame_quote_name">Jim Morrison</p>
             </ion-col>
         </ion-row>
+    </ion-grid>
 
+        <ion-footer>
+            <ion-toolbar>
         <ion-row class="btn_row">
-            <ion-col size="3" text-center>
-                <ion-fab class="interesse_btn" (click)="interesser()">
-                    <ion-fab-button translucent=true class="interesse_btn_txt">interesser</ion-fab-button>
-                </ion-fab>
-            </ion-col>
             <ion-col text-center>
-                <button class="hangout_btn" (click)="chat()">
-                    <svg width="92px" height="92px" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink">
+                <img class="chat_private" src="../../assets/img/ChatPrivate.png" (click)="chat()">
+                <img class="chat_group" src="../../assets/img/chatGroup.png" (click)="chat()">
+                <!--
+                <svg width="92px" height="92px" viewBox="0 0 92 92" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                        <defs>
-                            <filter x="-17.5%" y="-17.5%" width="135.0%" height="135.0%" filterUnits="objectBoundingBox"
-                                    id="filter-1">
-                                <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-                                <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1"
-                                                result="shadowBlurOuter1"></feGaussianBlur>
-                                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix"
-                                               in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-                                <feMerge>
-                                    <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                                </feMerge>
-                            </filter>
-                            <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-2">
-                                <stop stop-color="#3023AE" offset="0%"></stop>
-                                <stop stop-color="#C86DD7" offset="100%"></stop>
-                            </linearGradient>
-                            <circle id="circle_btn" cx="40" cy="40" r="40"></circle>
-                        </defs>
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="MainPage" transform="translate(-144.000000, -546.000000)">
-                                <g id="RetroHang-Btn" filter="url(#filter-1)"
-                                   transform="translate(148.000000, 550.000000)">
-                                    <path d="M30.5,78.5 L49.5,78.5" id="Line-12" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M23.5,76.5 L56.5,76.5" id="Line-11" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M19.5,74.5 L60.5,74.5" id="Line-10" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M16.5,72.5 L63.5,72.5" id="Line-9" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M13.5,70.5 L65.5,70.5" id="Line-8" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M11.5,68.5 L68.5,68.5" id="Line-7" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M10.5,66.5 L69.5,66.5" id="Line-6" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M8.5,64.5 L70.5,64.5" id="Line-5" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M6.5,62.5 L73.5,62.5" id="Line-4" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M5.5,60.5 L74.5,60.5" id="Line-3" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M4.5,58.5 L75.5,58.5" id="Line-2" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <path d="M3.5,56.5 L76.127907,56.5" id="Line-1" stroke="#5013FE"
-                                          stroke-linecap="square"></path>
-                                    <mask id="mask-4" fill="white">
-                                        <use xlink:href="#circle_btn"></use>
-                                    </mask>
-                                    <use id="circle" stroke="url(#linearGradient-2)" stroke-width="3"
-                                         fill-rule="nonzero" xlink:href="#circle_btn"></use>
-                                </g>
+                    <defs>
+                        <filter x="-17.5%" y="-17.5%" width="135.0%" height="135.0%" filterUnits="objectBoundingBox"
+                                id="filter-1">
+                            <feOffset dx="2" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"></feGaussianBlur>
+                            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix"
+                                           in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                            <feMerge>
+                                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                <feMergeNode in="SourceGraphic"></feMergeNode>
+                            </feMerge>
+                        </filter>
+                        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-2">
+                            <stop stop-color="#3023AE" offset="0%"></stop>
+                            <stop stop-color="#C86DD7" offset="100%"></stop>
+                        </linearGradient>
+                        <circle id="circle_btn" cx="40" cy="40" r="40"></circle>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="MainPage" transform="translate(-144.000000, -546.000000)">
+                            <g id="RetroHang-Btn" filter="url(#filter-1)"
+                               transform="translate(148.000000, 550.000000)">
+                                <path d="M30.5,78.5 L49.5,78.5" id="Line-12" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M23.5,76.5 L56.5,76.5" id="Line-11" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M19.5,74.5 L60.5,74.5" id="Line-10" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M16.5,72.5 L63.5,72.5" id="Line-9" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M13.5,70.5 L65.5,70.5" id="Line-8" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M11.5,68.5 L68.5,68.5" id="Line-7" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M10.5,66.5 L69.5,66.5" id="Line-6" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M8.5,64.5 L70.5,64.5" id="Line-5" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M6.5,62.5 L73.5,62.5" id="Line-4" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M5.5,60.5 L74.5,60.5" id="Line-3" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M4.5,58.5 L75.5,58.5" id="Line-2" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <path d="M3.5,56.5 L76.127907,56.5" id="Line-1" stroke="#5013FE"
+                                      stroke-linecap="square"></path>
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#circle_btn"></use>
+                                </mask>
+                                <use id="circle" stroke="url(#linearGradient-2)" stroke-width="3"
+                                     fill-rule="nonzero" xlink:href="#circle_btn"></use>
                             </g>
                         </g>
-                    </svg>
-                </button>
-            </ion-col>
-            <ion-col size="3">
+                    </g>
+                </svg>
+                -->
             </ion-col>
         </ion-row>
-    </ion-grid>
+        <ion-row class="interesse_row">
+            <ion-col>
+                <ion-button class="interesse_btn_txt" shape="round" (click)="interesser()">
+                 interesser
+                </ion-button>
+            </ion-col>
+        </ion-row>
+            </ion-toolbar>
+        </ion-footer>
+
 </ion-content>
