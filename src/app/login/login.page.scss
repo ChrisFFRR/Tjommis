@@ -12,7 +12,9 @@ ion-item {
  text-align: center;
 }
 
-
+ion-button {
+ --color-activated: var(--ion-color-secondary-contrast);
+}
 
 .login_input {
  text-align: start;
