@@ -1,4 +1,6 @@
-
+ion-list {
+  --ion-background-color: rgba(0,0,0,0);
+}
 
 .registercard{
   position: relative;
@@ -41,8 +43,4 @@ ion-button {
   --border-style: solid;
   --border-width: 2px;
   --color: #8C56A7;
-}
-
-.item-highlight.item-inner-highlight {
- bottom: 5px !important;
 }
