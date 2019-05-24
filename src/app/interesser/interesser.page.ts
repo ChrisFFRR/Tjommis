@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {NavController} from "@ionic/angular";
+
 
 @Component({
   selector: 'app-interesser',
@@ -7,6 +10,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./interesser.page.scss'],
 })
 export class InteresserPage implements OnInit {
+  data:Observable<any>;
+  items:any;
+  url:string;
 
   public tags: any[] = [];
   public selectedTags: any[] = [];
@@ -21,7 +27,33 @@ export class InteresserPage implements OnInit {
 
 
   constructor(public router: Router) {
+      this.getData()
   }
+  getData()
+  {
+        this.items = [
+            {
+
+                "title": "Skole",
+                 "tag": ["#eksamen", "#kollokvie", "#bachelor","#master", "#brukerundersøkelse", "#fadderuke"]
+
+            },
+            {
+
+                "title": "Idrett",
+                "tag":["#fotball", "#basketball", "#extremsport", "håndball","#ski","#BMX","#Skateboard",]
+            },
+            {
+
+                "title": "Fest",
+                "tag": ["#teater", "#kino", "#film", "#festival", "#litteratur", "#kunst", "#musikk"]
+            },
+            {
+              "title": "Kollokvie",
+                "tag": ["#jobbsøknad", "#internship", "#lønn", "#personutvikling","#deltidsjobb", "#opplæring"]
+            }]
+  }
+
   btnActivate(ionicButton) {
     ionicButton._color === 'dark' ? ionicButton.color = 'primary' : ionicButton.color = 'dark';
   };
