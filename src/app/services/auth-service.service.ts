@@ -43,7 +43,7 @@ export class AuthServiceService {
     logout() {
         return new Promise((resolve, reject) => {
             const headers = new HttpHeaders().set('X-Auth-Token', localStorage.getItem('token'));
-            this.http.post(apiUrl + 'logout', {}, {headers})
+            this.http.post(this.loginToken + '/logout', {}, {headers})
                 .subscribe(res => {
                     localStorage.clear();
                 }, (err) => {
