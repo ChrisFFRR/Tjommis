@@ -2,9 +2,9 @@
 
   <ion-toolbar transparent>
     <ion-buttons slot="primary">
-      <ion-button  slot="primary" class="hamburger_menu">
+      <button  class="hamburger_menu">
         <img src="assets/icon/hamburger_btn.svg">
-      </ion-button>
+      </button>
     </ion-buttons>
   </ion-toolbar>
 
@@ -12,24 +12,23 @@
 
 <ion-content padding no-bounce>
   <ion-grid>
-
     <ion-row>
       <ion-col class="headline_col" text-center>
         <h1 class="h1_interesser">Hva er dine interesser?</h1>
       </ion-col>
     </ion-row>
     <ion-row>
+
       <ion-col>
         <ion-card class="cat_card">
-
           <ion-button class="card_btn" color="dark" (click)="tags=skole" (click)="btnActivate($event)">
             <ion-card-header>
               Skole
             </ion-card-header>
           </ion-button>
-
         </ion-card>
       </ion-col>
+
       <ion-col>
         <ion-card class="cat_card">
           <ion-button class="card_btn" #iteknologi  color="dark" (click)="tags=teknologi" (click)="btnActivate($event)">
