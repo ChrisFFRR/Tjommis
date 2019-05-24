@@ -3,6 +3,20 @@ ion-item {
   --border-color: rgba(0,0,0,0);
 }
 
+ion-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border: 2px red solid;
+}
+ion-toolbar {
+  --ion-background-color: rgba(0,0,0,0);
+}
+
+.chat_private, .chat_group {
+  width: 98px;
+  height: 128px;
+}
 
 .user_grid {
   padding: 0;
@@ -10,16 +24,16 @@ ion-item {
    border: 2px white solid;
   }
 
-.user_col, .quote_container, .bottom_container{
+.user_col, .quote_container, .btn_row, .bottom_container{
   border: 2px red solid;
 }
 
 .user_col {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .quote_container {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
  .user_name {
@@ -48,18 +62,9 @@ ion-item {
   }
 
   .interesse_btn_txt {
-    font-size: 14px !important;
+    font-size: 0.5rem !important;
     margin: 0;
   }
-
-  .interesse_btn {
-    position: relative;
-    top: 25px;
-    border:none;
-    background-color:transparent;
-    outline:none;
-  }
-
 
   //Hangout button animation css
   #circle {
