@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http} from '@angular/http';
+//import {Headers, Http} from '@angular/http';
 import {HttpHeaders} from "@angular/common/http";
 import {HttpClient} from "@angular/common/http";
 
@@ -13,18 +13,19 @@ export class AuthServiceService {
     public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
     //public endPoint : string = "https://localhost:5001";
     public loginToken: string;
-    constructor(public http: Http) {}
+    constructor(public http: HttpClient) {}
 
     login(credentials) {
         return new Promise((resolve, reject) => {
-            const headers = new Headers();
-            headers.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
-            const data = 'username=' + credentials.username +
-                '&password=' + encodeURIComponent(credentials.password) +
-                '&grant_type=password&client_id=tjommisdemo2018_signing_key_that_should_be_very_long';
+            const  headers = new  HttpHeaders().set("Content-Type", "application/json");
+            var loginData = { 
+                username:credentials.username,
+                password:encodeURIComponent(credentials.password),
+                grant_type:"password",
+                clientid:"tjommisdemo2018_signing_key_that_should_be_very_long"
+            };
 
-            // Send
-            this.http.post(apiUrl, data, {headers})
+            this.http.post<any>(apiUrl, loginData,{headers})
                 .subscribe(res => {
                     if (res.status === 200) {
                         console.log(res);
@@ -43,9 +44,7 @@ export class AuthServiceService {
 
     logout() {
         return new Promise((resolve, reject) => {
-            const headers = new Headers();
-            headers.append('X-Auth-Token', localStorage.getItem('token'));
-
+            const headers = new HttpHeaders().set('X-Auth-Token', localStorage.getItem('token'));
             this.http.post(apiUrl + 'logout', {}, {headers})
                 .subscribe(res => {
                     localStorage.clear();
