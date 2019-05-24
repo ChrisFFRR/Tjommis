@@ -1,44 +1,41 @@
 <ion-header>
 </ion-header>
 
-<ion-content id="background_color" padding>
+<ion-content padding>
     <ion-grid>
         <ion-row class="logo_header">
             <ion-col text-center>
-                <img alt="company_logo" src="../../assets/imgs/logoalenegul.png" height="200px">
+                <img alt="company_logo" src="../../assets/img/logo_txt.png">
             </ion-col>
         </ion-row>
 
         <ion-row class="login_form">
             <ion-col text-center>
                 <form [formGroup]="loginFormGroup">
-                    <ion-item class="login_user login_input">
+                    <ion-item class="login_input">
                         <ion-label position="floating">Username</ion-label>
                         <ion-input formControlName="username" type="text" value=""></ion-input>
                     </ion-item>
-
-                    <ion-item>
-                        <ion-label>
-                            <div *ngIf="!loginFormGroup.controls.username.valid  && (loginFormGroup.controls.username.dirty || submitAttempt)">
+                    <div *ngIf="(!loginFormGroup.controls.username.valid)  && (loginFormGroup.controls.username.dirty || submitAttempt)">
+                        <ion-item >
+                            <ion-label>
                                 <p>Please enter a valid name.</p>
-                            </div>
-                        </ion-label>
-                    </ion-item>
+                            </ion-label>
+                        </ion-item>
+                    </div>
 
 
-                    <ion-item class="login_pass login_input">
+                    <ion-item class="login_input">
                         <ion-label position="floating">Password</ion-label>
                         <ion-input formControlName="password" type="password" value=""></ion-input>
                     </ion-item>
-
-
-                    <ion-item>
-                        <ion-label>
-                            <div *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)">
+                    <div *ngIf="!loginFormGroup.controls.password.valid  && (loginFormGroup.controls.password.dirty || submitAttempt)">
+                        <ion-item>
+                            <ion-label>
                                 <p>Please enter a valid password.</p>
-                            </div>
-                        </ion-label>
-                    </ion-item>
+                            </ion-label>
+                        </ion-item>
+                    </div>
 
                 </form>
 
@@ -46,8 +43,8 @@
         </ion-row>
         <ion-row>
             <ion-col text-center>
-                <ion-button size="large" fill="outline" (click)="login()">Logg inn</ion-button>
-                <ion-button color="warning" (click)="register()">Registrer</ion-button>
+                <ion-button class="btn login" size="large" fill="outline" (click)="login()">Logg inn</ion-button>
+                <ion-button class="btn register" (click)="register()">Registrer</ion-button>
             </ion-col>
         </ion-row>
 

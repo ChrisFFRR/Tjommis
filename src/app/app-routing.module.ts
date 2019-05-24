@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {  RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'error-page', pathMatch: 'full' },
+  { path: '', redirectTo: 'interesser', pathMatch: 'full' },
   { path: 'welcome', loadChildren: './welcome/welcome.module#WelcomePageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'interesser', loadChildren: './interesser/interesser.module#InteresserPageModule' },

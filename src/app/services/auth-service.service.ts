@@ -9,7 +9,9 @@ const apiUrl = '/token';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthServiceService {  
+    //public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
+    public endPoint : string = "https://localhost:5001";
     public loginToken: string;
     constructor(public http: Http) {}
 
@@ -35,20 +37,6 @@ export class AuthServiceService {
                     }
                 }, (err) => {
                     return reject(err.json().error);
-                });
-        });
-    }
-
-    register(data) {
-        return new Promise((resolve, reject) => {
-            const headers = new Headers();
-//        headers.append('Content-Type', 'application/json');
-            headers.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
-            this.http.post(apiUrl + 'guest/signup', JSON.stringify(data), {headers})
-                .subscribe(res => {
-                    resolve(res);
-                }, (err) => {
-                    reject(err);
                 });
         });
     }

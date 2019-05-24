@@ -1,19 +1,37 @@
 
-.register{
-
-}
 
 .registercard{
   position: relative;
   top: 10%;
 }
-
-ion-button{
-
+.centered {
+  text-align: center;
 }
-
+.ion-item-border-top {
+  background-color: white;
+  
+  border-top-right-radius: 20px !important;
+  border-top-left-radius: 20px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.ion-item-border-bottom {
+  background-color: white;
+  border-bottom-right-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+  
 ion-item{
   --background: white;
+  background-color: white;
+  padding-left: 10px;
+  border-left-width: 20px;
 }
 
 #userText{

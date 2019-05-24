@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TjommisHubService} from "../services/tjommis-hub.service";
 import {AuthServiceService} from "../services/auth-service.service";
 import {Router} from "@angular/router";
@@ -31,6 +31,11 @@ export class LoginPage implements OnInit {
     }
     ngOnInit() {
     }
+    
+    register() {
+        this.router.navigateByUrl('/registrate');
+    }
+
     login(){
         this.displayError = false;
         this.submitAttempt = true;
