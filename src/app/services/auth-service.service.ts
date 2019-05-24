@@ -4,40 +4,38 @@ import {HttpHeaders} from "@angular/common/http";
 import {HttpClient} from "@angular/common/http";
 
 
-const apiUrl = '/token';
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {  
-    public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
     //public endPoint : string = "https://localhost:5001";
+    public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
+    public tokenUrl = this.endPoint + '/token';
+    
     public loginToken: string;
     constructor(public http: HttpClient) {}
 
     login(credentials) {
         return new Promise((resolve, reject) => {
-            const  headers = new  HttpHeaders().set("Content-Type", "application/json");
-            var loginData = { 
-                username:credentials.username,
-                password:encodeURIComponent(credentials.password),
-                grant_type:"password",
-                clientid:"tjommisdemo2018_signing_key_that_should_be_very_long"
-            };
-
-            this.http.post<any>(apiUrl, loginData,{headers})
+            const  headers = new  HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            let loginData = "username=" + credentials.username +
+             "&password=" + encodeURIComponent(credentials.password) +
+             "&grant_type=password&client_id=tjommisdemo2018_signing_key_that_should_be_very_long";
+    
+            this.http.post<any>(this.tokenUrl, loginData,{headers, responseType: 'json'})
                 .subscribe(res => {
-                    if (res.status === 200) {
-                        console.log(res);
-                        this.loginToken = res.json().access_token;
+                    if (res.access_token) {
+                        console.log("Token received: ", res);
+                        this.loginToken = res.access_token;
                         return resolve(this.loginToken);
 
                     } else {
                         console.log('Unknown error', res);
-                        return reject(res.json().error);
+                        return reject(res.error);
                     }
                 }, (err) => {
-                    return reject(err.json().error);
+                    console.log("Post error: ",err);
+                    return reject(err.statusText);
                 });
         });
     }
