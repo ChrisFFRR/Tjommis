@@ -9,11 +9,11 @@
   },
   "/developer_token": {
     "target": "https://localhost:5001/token",
-    "secure": true,
+    "secure": false,
     "pathRewrite": {
-      "^/token": ""
+      "^/developer_token": ""
     },
-    "changeOrigin": true
+    "changeOrigin": false
   },
   "logLevel": "debug"
 }
