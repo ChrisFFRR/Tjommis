@@ -10,7 +10,8 @@ ion-item {
  --background: rgba(0,0,0,0);
  --border-color: rgba(0,0,0,0);
  text-align: center;
-}
+
+}   
 
 
 .login_input {
@@ -19,6 +20,7 @@ ion-item {
  border-radius: 8px !important;
  margin-bottom: 5px;
  background: white;
+ padding: 0;
 }
 
  .login_form p {

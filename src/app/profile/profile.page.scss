@@ -1,68 +1,44 @@
+ion-item {
+  --ion-background-color: rgba(0,0,0,0);
+  --border-color: rgba(0,0,0,0);
+}
 
-  .hamburger_menu {
-    position: relative;
-    top: 10px;
-    border:none;
-    background-color:transparent;
-    outline:none;
+
+.user_grid {
+  padding: 0;
+   margin-top: 1.2rem;
+   border: 2px white solid;
   }
 
-  .user_grid {
-    padding: 0;
+.user_col, .quote_container, .bottom_container{
+  border: 2px red solid;
+}
 
-  }
+.user_col {
+  margin-bottom: 50px;
+}
 
-  .img_avatar {
-    width: 80px;
-    height: 80px;
-    margin: 0;
-    border-radius: 50%;
-    border: 1px solid purple
-  }
+.quote_container {
+  margin: 50px 0;
+}
 
-  .user_name {
+ .user_name {
     margin-left: 10px;
-    font-family: SFProDisplay-Thin !important;
     font-size: 25px;
-    color: #3123AE;
+    color: white;
     letter-spacing: -1.2px;
     text-align: left;
   }
 
-  .quote_grid, .hangout_btn_info_grid , .btn_row_grid{
-    position: relative;
-
-
-  }
-
-  .quote_grid {
-    top: 100px;
-
-  }
-
-  .hangout_btn_info_grid {
-    top: 180px;
-
-  }
   .info_hangout_btn {
     margin: 0;
-
   }
-
-  .arrow_icon {
-    font-size: 20px;
-    color: #9013FE;
-    animation: upnDown 1s infinite ease-in-out;
-  }
-
 
   .lame_quote, .lame_quote_name, .interesse_btn_txt, .info_hangout_btn{
-    font-family: SFProText-Light !important;
     font-size: 20px;
-    color: #9013FE;
+    color: whitesmoke;
     letter-spacing: -1.5px;
     text-align: center;
-    text-shadow: 0 2px 2px rgba(0,0,0,0.50);
 
   }
 
@@ -71,16 +47,11 @@
     font-style: italic;
   }
 
-
-
   .interesse_btn_txt {
     font-size: 14px !important;
     margin: 0;
   }
 
-  .btn_row_grid {
-    top: 180px;
-  }
   .interesse_btn {
     position: relative;
     top: 25px;
@@ -89,8 +60,8 @@
     outline:none;
   }
 
-  //Hangout button animation css
 
+  //Hangout button animation css
   #circle {
     opacity: 0;
     animation: 2s 1.3s ease fadeIn;
@@ -98,9 +69,7 @@
     -moz-animation: 1s 0.3s ease fadeIn;
     animation-fill-mode: forwards;
 
-
   }
-
 
   #Line-1 {
     opacity: 0;

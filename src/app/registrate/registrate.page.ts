@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {AuthServiceService} from "../services/auth-service.service";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { AuthServiceService } from "../services/auth-service.service";
+import { TjommisHubService } from "../services/tjommis-hub.service";
+import { ToastController } from '@ionic/angular';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-registrate',
@@ -8,55 +10,84 @@ import {AuthServiceService} from "../services/auth-service.service";
   styleUrls: ['./registrate.page.scss'],
 })
 export class RegistratePage implements OnInit {
-    public statusMessage: string = "";
-    displayError: boolean = false;
-    public loginFormGroup: FormGroup;
+  public statusMessage: string = "";
+  //displayError: boolean = false;
 
-    name: String = "test";
-    lastName: String = "test";
-    password: String = "test";
-    email: String = "test";
-    Institutt: String = "test";
-    Studie: String = "test";
+  username: string = "";
+  lastName: string = "";
+  password: string = "";
+  email: string = "";
+  Institutt: string[] = ["Kristiania", "Skole 2", "Skole 3"];
+  selectedInstitutt: string;
+  Studie: string[] = ["Studie 1", "Studie 2", "Studie 3"];
+  selectedStudie: string;
 
-    constructor(public  authService:  AuthServiceService) {
+  isPosting : boolean = false;
 
-    }
+  constructor(
+    public router: Router,
+    public authService: AuthServiceService,
+    public tjommisHub: TjommisHubService,
+    public toastController: ToastController) {
 
-    ngOnInit() {
-    }
+  }
 
-    register(form) {
-        this.authService.register(form.value).then((res) => {
-            fetch('https://smidigprosjekt.azurewebsites.net/RegisterUser', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    name: this.name,
-                })
-            }),
-                rejected => {
-                    console.log("Could not create user " , rejected)
-                }
-        })
+  ngOnInit() {
+  }
 
+  async displayError(errormessage: string) {
+    const toast = await this.toastController.create({
+      message: errormessage,
+      duration: 2000
+    });
+    toast.present();
+  }
+  
 
-        /*register(form){
-           fetch('https://smidigprosjekt.azurewebsites.net/RegisterUser', {
-             method: 'post',
-             headers: {'Content-Type': 'application/json'},
-             body: JSON.stringify({
-               name: this.name,
-               lastName: this.lastName,
-               password: this.password,
-               email: this.email,
-               Institutt: this.Institutt,
-               Studie: this.Studie
-             })
-           })
-       }
-       */
-    }
+  register() {
+    this.isPosting = true;
+    var newUser = {
+      name: this.username,
+      lastname: this.lastName,
+      password: this.password,
+      email: this.email,
+      Institutt: this.selectedInstitutt,
+      Studie: this.selectedStudie
+    };
+    console.log("Creating user",newUser);
+    fetch(this.authService.endPoint + '/api/RegisterUser', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newUser)
+    })
+      .then(_ => {
+        //Sign in metode fra authservice
+        this.authService.login({ username: this.username, password: this.password })
+          .then(response => {
+            this.statusMessage = "Logging inn...";
+            this.tjommisHub.connect(this.authService.loginToken).then(
+              () => {
+                this.statusMessage = "";
+                this.router.navigateByUrl('/profile');
+              },
+              rejected => {
+                console.log("Could not connect: ", rejected)
+              }
+            );
+          },
+            rejectedResponse => {
+              console.log("Rejected:", rejectedResponse);
+              this.displayError("Failed to logon")
+              this.statusMessage = rejectedResponse;
+            });
+
+      })
+      .catch(err => {
+        console.log(err);
+        this.displayError("Could not create user");
+        this.isPosting = false;
+      });
+  }
 
 }
 
