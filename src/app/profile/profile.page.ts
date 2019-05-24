@@ -2,6 +2,8 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Events} from "@ionic/angular";
 import {TjommisHubService} from "../services/tjommis-hub.service";
+import anime from 'animejs';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +17,7 @@ export class ProfilePage implements OnInit {
       public tjommisHub: TjommisHubService,
       public events: Events,
       private zone: NgZone) {
+
 
     this.events.subscribe('randomNumber', (data) => {
       this.onUpdateRandomNumber(data);
@@ -44,11 +47,11 @@ export class ProfilePage implements OnInit {
     });
   };
 
-    onUpdateUsername = username => {
-      this.zone.run(() => {
-        this.username = username;
-      });
-    };
+  onUpdateUsername = username => {
+    this.zone.run(() => {
+      this.username = username;
+    });
+  };
 
   ngOnInit() {
 
@@ -59,11 +62,23 @@ export class ProfilePage implements OnInit {
   }
 
   chat() {
-    this.router.navigateByUrl('/chat')
-    this.tjommisHub.Hangout();
+    this.router.navigateByUrl('/chat');
+    //this.tjommisHub.Hangout();
   }
 
   settings() {
     this.router.navigateByUrl('/settings')
+  }
+
+  animateClick() {
+    anime({
+      targets: 'chatWrapper',
+      translateY: [
+        {value: 0, duration: 1200},
+        {value: -200, duration: 800},
+      ],
+      duration: 2000,
+      complete: () => {this.chat()}
+    });
   }
 }
