@@ -7,15 +7,27 @@ ion-footer {
   position: absolute;
   bottom: 0;
   left: 0;
-  border: 2px red solid;
 }
-ion-toolbar {
-  --ion-background-color: rgba(0,0,0,0);
+
+ion-button {
+ // --padding-start: 0;
+ // --padding-end: 0;
+  --background: var(--ion-color-secondary-contrast);
+  --color: #A362A5;
+  font-weight: bold;
+  //height: 5rem;
+  width: 168px;
 }
 
 .chat_private, .chat_group {
   width: 98px;
   height: 128px;
+}
+
+.chat_private {
+  animation: 1s 0.01s ease fadeIn;
+  -webkit-animation: 1s 0.01s ease fadeIn;
+  -moz-animation: 1s 0.01s ease fadeIn;
 }
 
 .user_grid {
@@ -24,7 +36,7 @@ ion-toolbar {
    border: 2px white solid;
   }
 
-.user_col, .quote_container, .btn_row, .bottom_container{
+.user_col, .quote_container{
   border: 2px red solid;
 }
 
@@ -61,7 +73,7 @@ ion-toolbar {
     font-style: italic;
   }
 
-  .interesse_btn_txt {
+  .interesse_btn {
     font-size: 0.5rem !important;
     margin: 0;
   }

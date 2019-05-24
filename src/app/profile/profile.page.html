@@ -22,7 +22,6 @@
     </ion-grid>
 
         <ion-footer>
-            <ion-toolbar>
         <ion-row class="btn_row">
             <ion-col text-center>
                 <img class="chat_private" src="../../assets/img/ChatPrivate.png" (click)="chat()">
@@ -91,13 +90,12 @@
             </ion-col>
         </ion-row>
         <ion-row class="interesse_row">
-            <ion-col>
-                <ion-button class="interesse_btn_txt" shape="round" (click)="interesser()">
+            <ion-col text-center>
+                <ion-button class="interesse_btn" (click)="interesser()">
                  interesser
                 </ion-button>
             </ion-col>
         </ion-row>
-            </ion-toolbar>
         </ion-footer>
 
 </ion-content>
