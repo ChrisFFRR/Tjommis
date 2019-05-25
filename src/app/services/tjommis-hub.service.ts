@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HubConnection, HubConnectionBuilder} from '@aspnet/signalr';
+import {HubConnection, HubConnectionBuilder, HubConnectionState} from '@aspnet/signalr';
 import {Events} from '@ionic/angular';
 import {AuthServiceService} from "../services/auth-service.service";
+import { connect } from 'tls';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,18 @@ import {AuthServiceService} from "../services/auth-service.service";
 
 export class TjommisHubService {
     private hubConnection: HubConnection;
-    public username: string;
+    //public username: string;
+    public connectionInfo : ConnectionInfo; 
     public connectedusers: number;
     public randomNumber: number;
     public authenticated: boolean;
     public messages: string[] = ['Messages:'];
+    public connected = this.hubConnection != null ? this.hubConnection.state == HubConnectionState.Connected : false;
+    public getConnectionState() {
+        return this.hubConnection != null ? this.hubConnection.state : 0;
+    }
+    //public state : HubConnectionState = this.hubConnection == null ? 2 : this.hubConnection.state;
+
     constructor(public events: Events,
         public authService: AuthServiceService,) {}
 
@@ -21,9 +29,10 @@ export class TjommisHubService {
     SendMessage(message) {
         this.hubConnection.send('SendMessage', message);
     }
-    Hangout() {
-        this.hubConnection.send('Hangout');
+    Hangout()  {
+        return this.hubConnection.invoke('TestHangout');
     }
+
     // Connect method for SignalR
     // Returns: Promise(resolve, reject)
     connect(accesstoken) {
@@ -55,10 +64,10 @@ export class TjommisHubService {
             this.events.publish('message', fullmessage);
             console.log('message: ', message, 'user:', user);
         });
-        hubConnection.on('infoConnectEvent', (username: string) => {
-            this.username = username;
-            this.events.publish('username', username);
-            console.log('username', username);
+        hubConnection.on('infoConnectEvent', (connectioninfo: ConnectionInfo) => {
+            console.log('infoConncetEvent', connectioninfo);
+            this.connectionInfo = connectioninfo;
+            this.events.publish('username', connectioninfo.userInfo.username);
         });
         hubConnection.on('infoGlobalEvent', (connectedusers: number) => {
             this.connectedusers = connectedusers;
@@ -70,14 +79,50 @@ export class TjommisHubService {
             this.events.publish('randomNumber', randomNumber);
             console.log('randomNumber:', randomNumber);
         });
-        hubConnection.on('JoinRoom',(room: Lobby) => {
-            this.events.publish('joinRoom',room);
+        hubConnection.on('joinroom',(room: Lobby) => {
+            this.events.publish('joinroom',room);
+        });
+        hubConnection.on('userjoin',(user: ExternalUser, lobby : Lobby) => {
+            this.events.publish('userjoin',user,lobby);
+        });
+        hubConnection.on('lobbyinfo',(room: Lobby) => {
+            this.events.publish('lobbyinfo',room);
+        });
+        hubConnection.on('hangoutevent',(eventArgs : HangoutEventMessage) => {
+            this.events.publish('hangoutevent',eventArgs);
         });
     }
 }
-
+export class User {
+    username : string;
+    lobbies : Lobby[];
+}
+export class InterestItem {
+    id : number;
+    category : string;
+    name : string;
+}
+export class ConnectionInfo {
+    userInfo : User;
+    interestList : InterestItem[];
+}
+export class ExternalUser {
+    username : string;
+    lastname : string;
+}
+export class Message {
+    messagetype : string;
+    username : string;
+    message: string;
+    timestamp : Date;
+}
 export class Lobby {
-    public Id : number;
-    public Members : object[];
-    public Messages : string[];
+    public lobbyname : string;
+    public members : ExternalUser[];
+    public messages : Message[];
+}
+
+export class HangoutEventMessage {
+    public timeStamp : Date;
+    public totalUsers : number
 }

@@ -2,6 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TjommisHubService} from "../services/tjommis-hub.service";
 import {Events} from "@ionic/angular";
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-chat',
@@ -40,6 +41,7 @@ export class ChatPage implements OnInit {
   }
 
   ngOnInit() {
+    if (this.tjommisHub.getConnectionState() == 0) this.router.navigateByUrl('/login');
   }
 
 }

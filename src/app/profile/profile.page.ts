@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {Events} from "@ionic/angular";
 import {TjommisHubService} from "../services/tjommis-hub.service";
 import anime from 'animejs';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class ProfilePage implements OnInit {
       private zone: NgZone) {
 
 
+
     this.events.subscribe('randomNumber', (data) => {
       this.onUpdateRandomNumber(data);
     });
@@ -31,9 +33,9 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  username: string = this.tjommisHub.username;
-  randomNumber: number;
-  connectedUsers: number;
+  username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
+  randomNumber: number = 0;
+  connectedUsers: number = 0;
 
   onUpdateRandomNumber = number => {
     this.zone.run(() => {
@@ -54,7 +56,9 @@ export class ProfilePage implements OnInit {
   };
 
   ngOnInit() {
-
+    if (this.tjommisHub.getConnectionState() == 0) {
+      this.router.navigateByUrl("/login");
+    } 
   }
 
   interesser() {
@@ -62,8 +66,16 @@ export class ProfilePage implements OnInit {
   }
 
   chat() {
-    this.router.navigateByUrl('/chat');
-    //this.tjommisHub.Hangout();
+    /*
+    var returnvalue = this.tjommisHub.Hangout();
+    console.log("Moving to loading??",returnvalue);
+    if (returnvalue == true) {
+      this.router.navigateByUrl('/loading');
+    }*/
+    this.tjommisHub.Hangout().then(e => {
+      if (e) this.router.navigateByUrl('/loading');
+    })
+    //
   }
 
   settings() {
