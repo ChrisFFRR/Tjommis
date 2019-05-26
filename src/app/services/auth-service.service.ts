@@ -8,8 +8,8 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthServiceService {  
-    public endPoint : string = "https://localhost:5001";
-    //public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
+    //public endPoint : string = "https://localhost:5001";
+    public endPoint : string = "";//"https://smidigprosjekt.azurewebsites.net";
     public tokenUrl = this.endPoint + '/token';
     
     public loginToken: string;
