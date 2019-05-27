@@ -1,52 +1,49 @@
 import { Injectable } from '@angular/core';
-import {Headers, Http} from '@angular/http';
+//import {Headers, Http} from '@angular/http';
 import {HttpHeaders} from "@angular/common/http";
 import {HttpClient} from "@angular/common/http";
 
-
-const apiUrl = '/token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {  
-    //public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
-    public endPoint : string = "https://localhost:5001";
+    public endPoint : string = "";//"https://smidigprosjekt.azurewebsites.net";
+    //public tokenUrl = this.endPoint + '/developer_token';
+    //public hubEndPoint = 'https://localhost:5001/tjommisHub';//'/tjommisHub';
+    public hubEndPoint = '/tjommisHub';
     public loginToken: string;
-    constructor(public http: Http) {}
+    constructor(public http: HttpClient) {}
 
     login(credentials) {
         return new Promise((resolve, reject) => {
-            const headers = new Headers();
-            headers.append('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
-            const data = 'username=' + credentials.username +
-                '&password=' + encodeURIComponent(credentials.password) +
-                '&grant_type=password&client_id=tjommisdemo2018_signing_key_that_should_be_very_long';
-
-            // Send
-            this.http.post(apiUrl, data, {headers})
+            const  headers = new  HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            let loginData = "username=" + credentials.username +
+             "&password=" + encodeURIComponent(credentials.password) +
+             "&grant_type=password&client_id=tjommisdemo2018_signing_key_that_should_be_very_long";
+    
+            this.http.post<any>(this.tokenUrl, loginData,{headers, responseType: 'json'})
                 .subscribe(res => {
-                    if (res.status === 200) {
-                        console.log(res);
-                        this.loginToken = res.json().access_token;
+                    if (res.access_token) {
+                        console.log("Token received: ", res);
+                        this.loginToken = res.access_token;
                         return resolve(this.loginToken);
 
                     } else {
                         console.log('Unknown error', res);
-                        return reject(res.json().error);
+                        return reject(res.error);
                     }
                 }, (err) => {
-                    return reject(err.json().error);
+                    console.log("Post error: ",err);
+                    return reject(err.statusText);
                 });
         });
     }
 
     logout() {
         return new Promise((resolve, reject) => {
-            const headers = new Headers();
-            headers.append('X-Auth-Token', localStorage.getItem('token'));
-
-            this.http.post(apiUrl + 'logout', {}, {headers})
+            const headers = new HttpHeaders().set('X-Auth-Token', localStorage.getItem('token'));
+            this.http.post(this.loginToken + '/logout', {}, {headers})
                 .subscribe(res => {
                     localStorage.clear();
                 }, (err) => {
