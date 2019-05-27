@@ -25,7 +25,7 @@
             <ion-col>
                 <div class="tags_div" text-center>
                     <ion-buttons>
-                        <ion-button #itags color="light" *ngFor="let tag of tags" (click)="selectTags(tag)" (click)="btnTags(itags)">
+                        <ion-button color="light" *ngFor="let tag of tags" (click)="selectTags(tag)">
                           <p class="tag_txt">{{ tag }}</p>
                         </ion-button>
                     </ion-buttons>
