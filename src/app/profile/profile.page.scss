@@ -3,6 +3,39 @@ ion-item {
   --border-color: rgba(0,0,0,0);
 }
 
+ion-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+span.chatWrapper {
+  display: inline-block;
+}
+
+ion-button {
+  --background: var(--ion-color-secondary-contrast);
+  --color: #A362A5;
+  font-weight: bold;
+  width: 168px;
+}
+
+.chat_private, .chat_group {
+  opacity: 0;
+  width: 98px;
+  height: 128px;
+  animation: 1s 0.01s ease fadeIn;
+  -webkit-animation: 1s 0.01s ease fadeIn;
+  -moz-animation: 1s 0.01s ease fadeIn;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+.chat_private:active, .chat_group:active {
+  -webkit-animation: click 5s;
+  -o-animation: click 5s;
+  animation: upnDown 5s infinite;
+}
 
 .user_grid {
   padding: 0;
@@ -10,18 +43,16 @@ ion-item {
    border: 2px white solid;
   }
 
-.user_col, .quote_container, .bottom_container{
+.user_col, .quote_container{
   border: 2px red solid;
 }
 
 .user_col {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
-
 .quote_container {
-  margin: 50px 0;
+  margin: 20px 0;
 }
-
  .user_name {
     margin-left: 10px;
     font-size: 25px;
@@ -29,11 +60,9 @@ ion-item {
     letter-spacing: -1.2px;
     text-align: left;
   }
-
   .info_hangout_btn {
     margin: 0;
   }
-
   .lame_quote, .lame_quote_name, .interesse_btn_txt, .info_hangout_btn{
     font-size: 20px;
     color: whitesmoke;
@@ -41,134 +70,18 @@ ion-item {
     text-align: center;
 
   }
-
   .lame_quote_name {
     text-align: right;
     font-style: italic;
   }
-
-  .interesse_btn_txt {
-    font-size: 14px !important;
+  .interesse_btn {
+    font-size: 0.5rem !important;
     margin: 0;
   }
 
-  .interesse_btn {
-    position: relative;
-    top: 25px;
-    border:none;
-    background-color:transparent;
-    outline:none;
-  }
 
-
-  //Hangout button animation css
-  #circle {
-    opacity: 0;
-    animation: 2s 1.3s ease fadeIn;
-    -webkit-animation: 1s 0.3s ease fadeIn;
-    -moz-animation: 1s 0.3s ease fadeIn;
-    animation-fill-mode: forwards;
-
+  @-webkit-keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
   }
-
-  #Line-1 {
-    opacity: 0;
-    animation: 1s 0.24s ease fadeIn;
-    -webkit-animation: 1s 0.24s ease fadeIn;
-    -moz-animation: 1s 0.24s ease fadeIn;
-    animation-fill-mode: forwards;
-
-
-  }
-  #Line-2 {
-    opacity: 0;
-    animation: 1s 0.22s ease fadeIn;
-    -webkit-animation: 1s 0.22s ease fadeIn;
-    -moz-animation: 1s 0.22s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-3 {
-    opacity: 0;
-    animation: 1s 0.20s ease fadeIn;
-    -webkit-animation: 1s 0.20s ease fadeIn;
-    -moz-animation: 1s 0.20s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-4 {
-    opacity: 0;
-    animation: 1s 0.18s ease fadeIn;
-    -webkit-animation: 1s 0.18s ease fadeIn;
-    -moz-animation: 1s 0.18s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-5 {
-    opacity: 0;
-    animation: 1s 0.16s ease fadeIn;
-    -webkit-animation: 1s 0.16s ease fadeIn;
-    -moz-animation: 1s 0.16s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-6 {
-    opacity: 0;
-    animation: 1s 0.14s ease fadeIn;
-    -webkit-animation: 1s 0.14s ease fadeIn;
-    -moz-animation: 1s 0.14s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-7 {
-    opacity: 0;
-    animation: 1s 0.12s ease fadeIn;
-    -webkit-animation: 1s 0.12s ease fadeIn;
-    -moz-animation: 1s 0.12s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-8 {
-    opacity: 0;
-    animation: 1s 0.10s ease fadeIn;
-    -webkit-animation: 1s 0.10s ease fadeIn;
-    -moz-animation: 1s 0.10s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-9 {
-    opacity: 0;
-    animation: 1s 0.08s ease fadeIn;
-    -webkit-animation: 1s 0.08s ease fadeIn;
-    -moz-animation: 1s 0.08s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-
-  #Line-10 {
-    opacity: 0;
-    animation: 1s 0.06s ease fadeIn;
-    -webkit-animation: 1s 0.06s ease fadeIn;
-    -moz-animation: 1s 0.06s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-  #Line-11 {
-    opacity: 0;
-    animation: 1s 0.04s ease fadeIn;
-    -webkit-animation: 1s 0.04s ease fadeIn;
-    -moz-animation: 1s 0.04s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-
-  #Line-12 {
-    opacity: 0;
-    animation: 1s 0.01s ease fadeIn;
-    -webkit-animation: 1s 0.01s ease fadeIn;
-    -moz-animation: 1s 0.01s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
-
-
-  @keyframes fadeIn {
-    100% { opacity: 1; }
-  }
-
-  @keyframes upnDown {
-    0%, 100% { transform: translateY(0)}
-    50% { transform: translateY(10px)}
-
-  }
-
-

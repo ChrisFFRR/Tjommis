@@ -10,9 +10,11 @@ ion-item {
  --background: rgba(0,0,0,0);
  --border-color: rgba(0,0,0,0);
  text-align: center;
+}
 
-}   
-
+ion-button {
+ --color-activated: var(--ion-color-secondary-contrast);
+}
 
 .login_input {
  text-align: start;
@@ -36,9 +38,20 @@ ion-item {
  --color: #8C56A7;
 }
 
-.btn.register {
- --color: #8C56A7;
- --background: var(--ion-color-warning);
+.register_col {
+ --ion-grid-column-padding: 0;
+}
+
+.register {
+ color: var(--ion-color-border);
+ margin-top: 0;
+ cursor: pointer;
+ font-weight: lighter;
+ text-decoration: underline;
+ text-decoration-color: var(--ion-color-bottom);
+ text-underline-position: under;
+
+
 }
 
 
