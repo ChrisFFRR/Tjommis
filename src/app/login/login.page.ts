@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
         //let affiliation = this.loginFormGroup.controls["affiliation"].value;
         this.authService.login({username: this.loginFormGroup.controls["username"].value, password: this.loginFormGroup.controls["password"].value})
             .then(response=> {
-                    this.statusMessage = "Logging inn...";
+                    this.statusMessage = "Logging in...";
                     this.tjommisHub.connect(this.authService.loginToken).then(
                         () => {
                             this.statusMessage = "";
