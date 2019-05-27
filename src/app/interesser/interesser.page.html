@@ -1,36 +1,41 @@
-<ion-header>
-  <ion-toolbar transparent>
-    <ion-buttons slot="primary">
-      <button  class="hamburger_menu">
-        <img src="assets/icon/hamburger_btn.svg">
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="profile"></ion-back-button>
+        </ion-buttons>
+        <h1 class="h1_interesser">VELG INTERESSER</h1>
+    </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-grid>
-    <ion-row>
-    <ion-col *ngFor="let item of items" col-6 >
-       <ion-button (click)="tags=item.tag" (click)="btnActivate($event)" >
-          {{item.title}}
-       </ion-button>
-    </ion-col>
-    </ion-row>
+    <ion-grid class="categoryGrid">
+        <ion-row>
+            <ion-col *ngFor="let item of items" text-center>
+                <ion-button class="kategoriBtn" (click)="tags=item.tag;">
+                    {{item.title}}
+                </ion-button>
+            </ion-col>
+        </ion-row>
     </ion-grid>
 
-    <ion-grid class="TAG_TEXT">
+    <ion-grid class="tagsGrid">
         <ion-row>
             <ion-col>
                 <div class="tags_div" text-center>
                     <ion-buttons>
                         <ion-button color="light" *ngFor="let tag of tags" (click)="selectTags(tag)">
-                          <p class="tag_txt">{{ tag }}</p>
+                            <p class="tag_txt">{{ tag }}</p>
                         </ion-button>
                     </ion-buttons>
                 </div>
             </ion-col>
         </ion-row>
     </ion-grid>
+    <ion-footer no-border>
+        <ion-toolbar >
+            <ion-button slot="end">LAGRE</ion-button>
+        </ion-toolbar>
+    </ion-footer>
+
 </ion-content>
