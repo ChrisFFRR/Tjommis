@@ -22,11 +22,20 @@ ion-back-button.button {
 .categoryGrid, .tagsGrid {
   display: flex;
   flex-wrap: wrap;
-  border: 2px solid red;
 }
 
 .kategoriBtn {
   min-width: 120.036px;
+}
+
+.tagsBtn {
+  --background: rgba(0,0,0,0);
+  --border-style: solid !important;
+  --border-width: 2px !important;
+  --border-color: var(--ion-color-border) !important;
+  --color: var(--ion-color-secondary-contrast) !important;
+
+
 }
 
 .h1_interesser {
@@ -34,14 +43,4 @@ ion-back-button.button {
   color: var(--ion-color-secondary-contrast);
   letter-spacing: 1.38px;
   text-align: left;
-}
-
-.tag_txt {
-  font-size: 0.8rem;
-  width: 90%;
-  left: 100px;
-}
-
-#tags_save_btn {
-  margin-right: 30px;
 }

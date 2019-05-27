@@ -14,6 +14,7 @@ export class InteresserPage implements OnInit {
   items:any;
   url:string;
 
+
   public tags: any[] = [];
   public selectedTags: any[] = [];
   public tjommisHub: any = TjommisHubService;
@@ -58,11 +59,11 @@ export class InteresserPage implements OnInit {
   }
 
 
-  btnTags(ionicButton) {
-    ionicButton._color === 'light' ? ionicButton.color = 'primary' : ionicButton.color = 'light';
+  tagClicked(tagBtn) {
+
   };
 
-  selectTags(tag) {
+  addTag(tag) {
     this.selectedTags.includes(tag) ? console.log("tag already selected") : this.selectedTags.push(tag);
     console.log(this.selectedTags);
   }
