@@ -2,6 +2,9 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Events} from "@ionic/angular";
 import {TjommisHubService} from "../services/tjommis-hub.service";
+import anime from 'animejs';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+
 
 @Component({
   selector: 'app-profile',
@@ -16,27 +19,18 @@ export class ProfilePage implements OnInit {
       public events: Events,
       private zone: NgZone) {
 
-    this.events.subscribe('randomNumber', (data) => {
-      this.onUpdateRandomNumber(data);
-    });
-
     this.events.subscribe('connectedusers', (data) => {
       this.onUpdateConnectedUsers(data);
     });
     this.events.subscribe('username', (data) => {
+      console.log("Profile.OnUpdateUserName",data);
       this.onUpdateUsername(data);
     });
   }
 
-  username: string = this.tjommisHub.username;
-  randomNumber: number;
-  connectedUsers: number;
+  username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
+  connectedUsers: number = 0;
 
-  onUpdateRandomNumber = number => {
-    this.zone.run(() => {
-      this.randomNumber = number;
-    });
-  };
 
   onUpdateConnectedUsers = number => {
     this.zone.run(() => {
@@ -44,14 +38,16 @@ export class ProfilePage implements OnInit {
     });
   };
 
-    onUpdateUsername = username => {
-      this.zone.run(() => {
-        this.username = username;
-      });
-    };
+  onUpdateUsername = username => {
+    this.zone.run(() => {
+      this.username = username;
+    });
+  };
 
   ngOnInit() {
-
+    if (this.tjommisHub.getConnectionState() == 0) {
+      this.router.navigateByUrl("/login");
+    } 
   }
 
   interesser() {
@@ -59,11 +55,36 @@ export class ProfilePage implements OnInit {
   }
 
   chat() {
-    this.router.navigateByUrl('/chat')
-    this.tjommisHub.Hangout();
+    /*
+    var returnvalue = this.tjommisHub.Hangout();
+    console.log("Moving to loading??",returnvalue);
+    if (returnvalue == true) {
+      this.router.navigateByUrl('/loading');
+    }*/
+    this.tjommisHub.Hangout().then(e => {
+      if (e) this.router.navigateByUrl('/loading');
+    })
+    //
   }
 
   settings() {
     this.router.navigateByUrl('/settings')
   }
+
+  animateClick() {
+    anime({
+      targets: 'chatWrapper',
+      translateY: '10vh',
+      duration: 300,
+      direction: 'alternate',
+      easing: 'easeInCubic',
+      scaleX: {
+        value: 1.05,
+        duration: 150,
+        delay: 268
+      },
+      complete: () => {this.chat()}
+    });
+  }
+  
 }

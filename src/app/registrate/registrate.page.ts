@@ -55,12 +55,20 @@ export class RegistratePage implements OnInit {
       Studie: this.selectedStudie
     };
     console.log("Creating user",newUser);
+
     fetch(this.authService.endPoint + '/api/RegisterUser', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser)
     })
-      .then(_ => {
+      .then(regResponse => {
+        if (regResponse.status == 400) {
+          regResponse.text().then(txt => {
+            this.displayError(txt);
+            this.isPosting = false;
+          })
+          return;
+        };
         //Sign in metode fra authservice
         this.authService.login({ username: this.username, password: this.password })
           .then(response => {
@@ -77,7 +85,8 @@ export class RegistratePage implements OnInit {
           },
             rejectedResponse => {
               console.log("Rejected:", rejectedResponse);
-              this.displayError("Failed to logon")
+              this.displayError("Failed to logon");
+              this.isPosting = false;
               this.statusMessage = rejectedResponse;
             });
 

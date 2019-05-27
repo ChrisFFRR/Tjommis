@@ -13,7 +13,7 @@
   <div clas="item">
     <ion-item *ngFor="let item of messages">
       <div class ="itemto">
-        {{item}}
+        {{item.timestamp}} - {{item.user}} - {{item.text}}
       </div>
     </ion-item>
   </div>

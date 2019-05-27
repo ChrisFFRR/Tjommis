@@ -8,13 +8,13 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
     <ion-grid>
     <ion-row>
     <ion-col *ngFor="let item of items" col-6 >
        <ion-button (click)="tags=item.tag" (click)="btnActivate($event)" >
           {{item.title}}
-
        </ion-button>
     </ion-col>
     </ion-row>
@@ -34,5 +34,3 @@
         </ion-row>
     </ion-grid>
 </ion-content>
-
-
