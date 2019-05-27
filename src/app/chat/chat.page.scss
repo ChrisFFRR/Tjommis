@@ -12,9 +12,8 @@ ion-content {
   overflow: hidden;
 
 }
-.chatheader{
-  position: relative;
-  left: 84px;
+#chatheader{
+
   color: white;
   text-shadow: 0px 2px 4px black;
 }
@@ -23,10 +22,18 @@ ion-content {
   top: 30px;
 }
 .chat{
+  /*align-content: center;
   position: sticky;
-  top: 550px;
+  top: 85%;
   left: 20px;
-  width: 300px;
+  min-width: 200px;  */
+}
+ion-footer{
+  align-content: center;
+  position: sticky;
+  top: 85%;
+  left: 20px;
+  min-width: 200px;
 }
 
 .itemto{
