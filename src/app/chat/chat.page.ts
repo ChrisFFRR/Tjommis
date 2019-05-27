@@ -1,6 +1,6 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {TjommisHubService} from "../services/tjommis-hub.service";
+import {TjommisHubService, HangoutEventMessage, Message} from "../services/tjommis-hub.service";
 import {Events} from "@ionic/angular";
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 
@@ -12,7 +12,7 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 export class ChatPage implements OnInit {
 
   message: string;
-  public messages: string[] = this.tjommisHub.messages;
+  public messages: Message[] = this.tjommisHub.activeRoom.messages;
 
   constructor(
       public router: Router,
@@ -20,14 +20,15 @@ export class ChatPage implements OnInit {
       public events: Events,
       private zone: NgZone
   ) {
-    events.subscribe("message",(data) => {
-      this.onAddMessage(data);
+    events.subscribe("message",(lobby: string, message: Message) => {
+      console.log("Chat message received:" , lobby, message);
+      this.onAddMessage();
     });
   }
 
-  private onAddMessage = message => {
+  private onAddMessage = () => {
     this.zone.run(() => {
-      this.messages = this.tjommisHub.messages;
+      this.messages = this.tjommisHub.activeRoom.messages;
     })
   };
 
