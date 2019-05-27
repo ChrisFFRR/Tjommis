@@ -1,11 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>loading</ion-title>
+    <ion-title>loading - {{timeRunning}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item>
-    <h4>{{timeStart}} - {{timeWorking}} - {{totalUsers}}</h4>
+    <h4>{{lobbyName}}</h4>
+  </ion-item>
+  <ion-item *ngFor="let member of members">
+    {{member.username}}
   </ion-item>
 </ion-content>
