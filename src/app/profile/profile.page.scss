@@ -9,6 +9,10 @@ ion-footer {
   left: 0;
 }
 
+span.chatWrapper {
+  display: inline-block;
+}
+
 ion-button {
   --background: var(--ion-color-secondary-contrast);
   --color: #A362A5;
@@ -25,6 +29,12 @@ ion-button {
   -moz-animation: 1s 0.01s ease fadeIn;
   animation-fill-mode: forwards;
   cursor: pointer;
+}
+
+.chat_private:active, .chat_group:active {
+  -webkit-animation: click 5s;
+  -o-animation: click 5s;
+  animation: upnDown 5s infinite;
 }
 
 .user_grid {
@@ -69,25 +79,9 @@ ion-button {
     margin: 0;
   }
 
-  //Hangout button animation css
-  #circle {
-    opacity: 0;
-    animation: 2s 1.3s ease fadeIn;
-    -webkit-animation: 1s 0.3s ease fadeIn;
-    -moz-animation: 1s 0.3s ease fadeIn;
-    animation-fill-mode: forwards;
-  }
 
   @-webkit-keyframes fadeIn {
     100% {
       opacity: 1;
     }
   }
-
-  @keyframes upnDown {
-    0%, 100% { transform: translateY(0)}
-    50% { transform: translateY(10px)}
-
-  }
-
-
