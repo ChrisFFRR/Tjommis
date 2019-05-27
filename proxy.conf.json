@@ -5,6 +5,12 @@
     "changeOrigin": true,
     "logLevel":"debug"
   },
+  "/api/*": {
+    "target": "https://smidigprosjekt.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel":"debug"
+  },
   "/tjommisHub":{
     "target": "https://smidigprosjekt.azurewebsites.net",
     "secure": true,
