@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {NavController} from "@ionic/angular";
+import {TjommisHubService, InterestItem} from "../services/tjommis-hub.service";
 
 
 @Component({
@@ -16,11 +16,14 @@ export class InteresserPage implements OnInit {
 
   public tags: any[] = [];
   public selectedTags: any[] = [];
+  public tjommisHub: any = TjommisHubService;
 
 
   constructor(public router: Router) {
-      this.getData()
+      this.getData();
   }
+
+
   getData()
   {
         this.items = [
@@ -54,21 +57,16 @@ export class InteresserPage implements OnInit {
             ]
   }
 
-  btnActivate(ionicButton) {
-    ionicButton._color === 'dark' ? ionicButton.color = 'primary' : ionicButton.color = 'dark';
-  };
+
   btnTags(ionicButton) {
     ionicButton._color === 'light' ? ionicButton.color = 'primary' : ionicButton.color = 'light';
   };
 
   selectTags(tag) {
     this.selectedTags.includes(tag) ? console.log("tag already selected") : this.selectedTags.push(tag);
+    console.log(this.selectedTags);
   }
 
-  toMain() {
-    this.router.navigateByUrl('/profile');
-  }
   ngOnInit() {
   }
-
 }
