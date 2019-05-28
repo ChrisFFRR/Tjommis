@@ -125,6 +125,7 @@ export class TjommisHubService {
 }
 export class User {
     username : string;
+    interests : string[];
     lobbies : Lobby[];
 }
 export class InterestItem {
@@ -135,6 +136,7 @@ export class InterestItem {
 export class ConnectionInfo {
     userInfo : User;
     interestList : InterestItem[];
+
 }
 export class ExternalUser {
     username : string;

@@ -34,8 +34,13 @@ ion-back-button.button {
   --border-width: 2px !important;
   --border-color: var(--ion-color-border) !important;
   --color: var(--ion-color-secondary-contrast) !important;
-
-
+}
+.tagsBtnSelected {
+  --background: rgba(255,128,128,1);
+  --border-style: solid !important;
+  --border-width: 2px !important;
+  --border-color: var(--ion-color-border) !important;
+  --color: var(--ion-color-secondary-contrast) !important;
 }
 
 .lagreBtn {

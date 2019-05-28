@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
 import {TjommisHubService, InterestItem} from "../services/tjommis-hub.service";
 
 
@@ -10,23 +9,68 @@ import {TjommisHubService, InterestItem} from "../services/tjommis-hub.service";
   styleUrls: ['./interesser.page.scss'],
 })
 export class InteresserPage implements OnInit {
-  data:Observable<any>;
   items:any;
   url:string;
 
+  public categories : Set<string> = new Set<string>();
+  public activeCategory : string;
+  public tags: Set<InterestItem> = new Set<InterestItem>();
+  public selectedTags: string[] = [];
 
-  public tags: any[] = [];
-  public selectedTags: any[] = [];
-  public tjommisHub: any = TjommisHubService;
+  constructor(
+      public router: Router,
+      public tjommisHub: TjommisHubService,
+      public zone: NgZone
+      ) {
+  }
+  public isTagSelected(tag: string) : boolean 
+  {
+    if (this.selectedTags.includes(tag)) return true;
+    return false;
+  }
 
-
-  constructor(public router: Router) {
-      this.getData();
+  ionViewWillEnter() {
+    console.log("ConnectionInfoObject: " ,this.tjommisHub.connectionInfo);
+    this.categories = new Set<string>(Array.from(this.tjommisHub.connectionInfo.interestList,e=>e.category));
+    this.selectedTags = this.tjommisHub.connectionInfo.userInfo.interests;
+    console.log("Categories:",this.categories, "selections",this.selectedTags);
   }
 
 
+  setActiveCategory(category: string) {
+    this.activeCategory = category;
+    this.zone.run(() => {
+
+        let result = this.tjommisHub.connectionInfo.interestList.filter(e=>e.category.includes(this.activeCategory));
+
+        this.tags = new Set(
+            Array.from(
+                result
+            )
+        );
+    });
+  }
+  tagClicked(tagBtn) {
+
+  };
+
+  addTag(tag) {
+      console.log("addTag");
+      this.zone.run(() => {
+        this.selectedTags.includes(tag) ? this.selectedTags = this.selectedTags.filter(e=> e != tag) : this.selectedTags.push(tag);
+        console.log(this.selectedTags);
+      });
+  }
+
+  ngOnInit() {
+  }
+}
+
+/* 
+
   getData()
   {
+
         this.items = [
             {"title": "Gaming",
                  "tag": ["#PS4", "#XBOX", "#PC","#LoL", "#Dota2", "#WoW"]
@@ -56,18 +100,4 @@ export class InteresserPage implements OnInit {
                 "tag": ["#Vorspiel", "#Nachspiel", "#Hjemmefest", "#Låvefest", "#Alkoholfritt"]
             },
             ]
-  }
-
-
-  tagClicked(tagBtn) {
-
-  };
-
-  addTag(tag) {
-    this.selectedTags.includes(tag) ? console.log("tag already selected") : this.selectedTags.push(tag);
-    console.log(this.selectedTags);
-  }
-
-  ngOnInit() {
-  }
-}
+  }*/
