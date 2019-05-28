@@ -153,6 +153,8 @@ export class Lobby {
 }
 
 export class HangoutEventMessage {
+    public room: Lobby;
     public timeStamp : Date;
-    public totalUsers : number
+    public totalUsers : number;
+    public timeRunning: number;
 }

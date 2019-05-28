@@ -74,12 +74,17 @@ export class ProfilePage implements OnInit {
   animateClick() {
     anime({
       targets: 'chatWrapper',
-      translateY: [
-        {value: 0, duration: 1200},
-        {value: -200, duration: 800},
-      ],
-      duration: 2000,
+      translateY: '10vh',
+      duration: 300,
+      direction: 'alternate',
+      easing: 'easeInCubic',
+      scaleX: {
+        value: 1.05,
+        duration: 150,
+        delay: 268
+      },
       complete: () => {this.chat()}
     });
   }
+  
 }

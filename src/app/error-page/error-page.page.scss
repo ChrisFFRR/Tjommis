@@ -21,10 +21,12 @@ h1{
 }
 
 ion-card{
-  top: 35%;
-  padding: 2rem;
-  height: 200px;
-
+  position: relative;
+  top: 50%;
+}
+.chatdiv{
+  display: grid;
+  top: 50%;
 }
 
 .button{

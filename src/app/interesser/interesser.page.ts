@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {TjommisHubService, InterestItem} from "../services/tjommis-hub.service";
+
 
 @Component({
   selector: 'app-interesser',
@@ -7,36 +10,64 @@ import {Router} from "@angular/router";
   styleUrls: ['./interesser.page.scss'],
 })
 export class InteresserPage implements OnInit {
+  data:Observable<any>;
+  items:any;
+  url:string;
+
 
   public tags: any[] = [];
   public selectedTags: any[] = [];
-
-
-  skole = ["#eksamen", "#kollokvie", "#bachelor","#master", "#brukerundersøkelse", "#fadderuke"];
-  teknologi = ["#ps4", "#xbox", "#switch", "#mobil","#hardware", "#software","#mac","#windows", "#data"];
-  idrett = ["#fotball", "#basketball", "#extremsport", "håndball","#ski","#BMX","#Skateboard",];
-  kultur = ["#teater", "#kino", "#film", "#festival", "#litteratur", "#kunst", "#musikk"];
-  jobb = ["#jobbsøknad", "#internship", "#lønn", "#personutvikling","#deltidsjobb", "#opplæring"];
-  matdrikke = ["#resturant", "#øl", "#vin", "#sprit", "#julebord", "#kjøtt", "#fisk", "#bacon"];
+  public tjommisHub: any = TjommisHubService;
 
 
   constructor(public router: Router) {
+      this.getData();
   }
-  btnActivate(ionicButton) {
-    ionicButton._color === 'dark' ? ionicButton.color = 'primary' : ionicButton.color = 'dark';
-  };
-  btnTags(ionicButton) {
-    ionicButton._color === 'light' ? ionicButton.color = 'primary' : ionicButton.color = 'light';
+
+
+  getData()
+  {
+        this.items = [
+            {"title": "Gaming",
+                 "tag": ["#PS4", "#XBOX", "#PC","#LoL", "#Dota2", "#WoW"]
+            },
+            {"title": "Skole",
+                "tag":["#Kollokvie", "#Eksamen", "#Tips", "Events","#Skolebøker",]
+            },
+            {"title": "Idrett",
+                "tag": ["#Fotball", "#Vektløfting", "#Løping", "#Speedwalking", "#Basketball"]
+            },
+            {"title": "Teknologi",
+                "tag": ["#Programmering", "#Windows", "#Linux", "#IT","#Java", "#Javascript"]
+            },
+            {"title": "Mat",
+                "tag": ["#Schnitzler", "#Pizza", "#Kebab", "#Øl","#Sprit", "#Vin"]
+            } ,
+            {"title": "Musikk",
+                "tag": ["#Pop", "#Rock", "#Rap", "#Metall","#Techno", "#RnB", "Vapourwave"]
+            },
+            {"title": "Litteratur",
+                "tag": ["#Alf Prøysen", "#J.K Rowling", "#R.R Tolkien", "#Dan Abnett"]
+            },
+            {"title": "Jobb",
+                "tag": ["#CV", "#Internship", "#Jobbsøknad", "#Konferanser", "#Workshops"]
+            },
+            {"title": "Fest",
+                "tag": ["#Vorspiel", "#Nachspiel", "#Hjemmefest", "#Låvefest", "#Alkoholfritt"]
+            },
+            ]
+  }
+
+
+  tagClicked(tagBtn) {
+
   };
 
-  selectTags(tag) {
+  addTag(tag) {
     this.selectedTags.includes(tag) ? console.log("tag already selected") : this.selectedTags.push(tag);
+    console.log(this.selectedTags);
   }
 
-  toMain() {
-    this.router.navigateByUrl('/profile');
-  }
   ngOnInit() {
   }
-
 }

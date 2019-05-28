@@ -1,112 +1,37 @@
-<ion-header>
-  <ion-toolbar transparent>
-    <ion-buttons slot="primary">
-      <button  class="hamburger_menu">
-        <img src="assets/icon/hamburger_btn.svg">
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="profile"></ion-back-button>
+        </ion-buttons>
+        <h4 class="h1_interesser">HVILKE INTERESSER HAR DU?</h4>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding no-bounce>
-  <ion-grid>
-    <ion-row>
-      <ion-col class="headline_col" text-center>
-        <h1 class="h1_interesser">Hva er dine interesser?</h1>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="cat_card">
 
-          <ion-button class="card_btn" color="dark" (click)="tags=skole" (click)="btnActivate($event)">
-            <ion-card-header>
-              Skole
-            </ion-card-header>
-          </ion-button>
+<ion-content>
+    <ion-grid class="categoryGrid">
+        <ion-row>
+            <ion-col *ngFor="let item of items" text-center>
+                <ion-button class="kategoriBtn" (click)="tags=item.tag;">
+                    {{item.title}}
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card class="cat_card">
-          <ion-button class="card_btn" #teknologi  color="dark" (click)="tags=teknologi" (click)="btnActivate($event)">
-            <ion-card-header>
-              Teknologi
-            </ion-card-header>
-          </ion-button>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-card class="cat_card" #idrett >
-          <ion-button class="card_btn" (click)="tags=idrett" (click)="btnActivate($event)">
-            <ion-card-header>
-              Idrett
-            </ion-card-header>
-          </ion-button>
-
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card class="cat_card">
-          <ion-button class="card_btn" #kultur color="dark" (click)="tags=kultur" (click)="btnActivate($event)">
-            <ion-card-header>
-              Kultur
-            </ion-card-header>
-          </ion-button>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col>
-        <ion-card class="cat_card">
-          <ion-button class="card_btn" #jobb color="dark" (click)="tags=jobb" (click)="btnActivate($event)">
-            <ion-card-header>
-              Jobb
-            </ion-card-header>
-          </ion-button>
-
-        </ion-card>
-      </ion-col>
-      <ion-col>
-        <ion-card class="cat_card" >
-          <ion-button class="card_btn" #matdrikke  color="dark" (click)="tags=matdrikke" (click)="btnActivate($event)">
-            <ion-card-header>
-              Mat & Drikke
-            </ion-card-header>
-          </ion-button>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div id="tags_div" text-center>
-          <ion-buttons >
-            <ion-button #itags color="light" *ngFor="let tag of tags" (click)="selectTags(tag)" (click)="btnTags(itags)">
-              {{ tag }}
-            </ion-button>
-          </ion-buttons>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid class="tagsGrid">
+        <ion-row>
+            <ion-col text-center>
+                <ion-button size="small" fill="outline" class="tagsBtn" *ngFor="let tag of tags; "  (click)="addTag(tag); tagClicked($event)">
+                    {{ tag }}
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-footer no-border>
+        <ion-toolbar>
+            <ion-button class="lagreBtn" slot="end">LAGRE</ion-button>
+        </ion-toolbar>
+    </ion-footer>
 
 </ion-content>
-
-<ion-footer>
-  <ion-row no-padding>
-    <ion-col>
-      <ion-buttons slot="primary">
-        <ion-button id="tags_save_btn" color="secondary" (click)="toMain()">Lagre</ion-button>
-      </ion-buttons>
-    </ion-col>
-  </ion-row>
-
-</ion-footer>

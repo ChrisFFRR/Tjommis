@@ -34,6 +34,15 @@ ion-item{
 
 #userText{
   color: white;
+
+  border: 2px red solid;
+  font-size: 1.875em;
+}
+
+ .tag_txt {
+  color: black;
+   border: 2px red solid;
+  font-size: 1.875em;
 }
 
 ion-button {
@@ -44,3 +53,4 @@ ion-button {
   --border-width: 2px;
   --color: #8C56A7;
 }
+

@@ -1,52 +1,50 @@
+ion-toolbar {
+  --background: rgba(0,0,0,0);
+  height: 75px;
+}
+
+ion-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+ion-back-button.button {
+  --color: var(--ion-color-border);
+  --padding-start: 0;
+  --padding-end: 0;
+  --margin-inline-end: 0 !important;
+  --margin-inline-start: 0 !important;
+  -webkit-margin-end: 0 !important;
+
+}
+
+.categoryGrid, .tagsGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.kategoriBtn {
+  min-width: 120.036px;
+}
+
+.tagsBtn {
+  --background: rgba(0,0,0,0);
+  --border-style: solid !important;
+  --border-width: 2px !important;
+  --border-color: var(--ion-color-border) !important;
+  --color: var(--ion-color-secondary-contrast) !important;
+
+
+}
+
+.lagreBtn {
+  --background: var(--ion-color-border);
+}
+
 .h1_interesser {
-  font-family: SFProDisplay-Light !important;
-  font-size: 28px;
-  color: #000000;
+  font-size: 0.9rem;
+  color: var(--ion-color-secondary-contrast);
   letter-spacing: 1.38px;
-  text-align: center;
-  box-shadow: 0px 1px 0px 0px rgba(100, 32, 145, 0.212)
-}
-
-.headline_col {
-  height: 40px !important;
-}
-
-.col {
-  padding: 0 !important;
-  height: 90px;
-}
-
-.card-header {
-  font-family: SFProDisplay-Regular !important;
-  font-size: 20px;
-  color: #FFFFFF;
-  letter-spacing: 0;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.50);
-}
-
-
-.cat_card {
-  width: 140px;
-  height: 80px;
-  padding: 0 !important;
-
-}
-.card_btn {
-  width: 140px !important;
-  height: 80px;
-  padding: 0;
-  opacity: 0.96;
-  //color:"dark";
-  background-image: linear-gradient(-133deg, #3023AE 0%, #A362A5 96%, #D8D8D8 100%) !important;
-
-}
-
-#tags_div {
-
-  height: 160px;
-}
-
-#tags_save_btn {
-  margin-right: 30px;
+  text-align: left;
 }

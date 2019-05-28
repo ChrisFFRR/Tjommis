@@ -1,12 +1,15 @@
 <ion-header>
-
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding text-wrap>
-  <button class="button" (click)="toHome()">
-    <img src="../../assets/imgs/avatar.png" height="40" width="40">
-  </button>
-  <div class="chatheader"><h1>Slå av en prat</h1></div>
+  <ion-back-button>
+  </ion-back-button>
+  <div id="chatheader" class="ion-text-center"><h1>Slå av en prat</h1></div>
   <div clas="item">
     <ion-item *ngFor="let item of messages">
       <div class ="itemto">
@@ -14,14 +17,15 @@
       </div>
     </ion-item>
   </div>
-  <div class="chat">
-    <ion-item>
-      <ion-input fixed="Type in Message to send" [(ngModel)]="message"
-                 (keyup.enter)="handleSendMessage()"></ion-input>
-      
-    </ion-item>
-
-  </div>
 
 
+
+  <ion-footer>
+    <div class="chat">
+      <ion-item>
+        <ion-input fixed="Type in Message to send" [(ngModel)]="message"
+                   (keyup.enter)="handleSendMessage()"></ion-input>
+      </ion-item>
+    </div>
+  </ion-footer>
 </ion-content>
