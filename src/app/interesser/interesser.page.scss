@@ -1,6 +1,6 @@
 ion-toolbar {
   --background: rgba(0,0,0,0);
-  height: 70px;
+  height: 75px;
 }
 
 ion-footer {
@@ -38,8 +38,12 @@ ion-back-button.button {
 
 }
 
+.lagreBtn {
+  --background: var(--ion-color-border);
+}
+
 .h1_interesser {
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   color: var(--ion-color-secondary-contrast);
   letter-spacing: 1.38px;
   text-align: left;
