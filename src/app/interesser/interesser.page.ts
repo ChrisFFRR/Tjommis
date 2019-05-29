@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {TjommisHubService, InterestItem} from "../services/tjommis-hub.service";
+
 
 
 @Component({
@@ -21,6 +22,7 @@ export class InteresserPage implements OnInit {
 
 
   constructor(public router: Router) {
+
       this.getData();
   }
 
@@ -59,8 +61,7 @@ export class InteresserPage implements OnInit {
   }
 
 
-  tagClicked(tagBtn) {
-
+  tagClicked() {
   };
 
   addTag(tag) {
