@@ -1,14 +1,40 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
+    
     <ion-title>loading - {{timeRunning}}</ion-title>
+    
+    <ion-title>Loading page</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
+<body>
+
+  
 
 <ion-content>
-  <ion-item>
+
+
+  <div class = lobbyInfo>
     <h4>{{lobbyName}}</h4>
+    <p>Vi matcher deg!</p>
+  </div>
+
+
+  <ion-item>
+    <ion-textarea placeholder =" Test av placeholder" ></ion-textarea>
+
   </ion-item>
+
+  <!-- 
+
   <ion-item *ngFor="let member of members">
     {{member.username}}
   </ion-item>
+
+  -->
+
+  <ion-spinner class="loadingSpinner" name="crescent"></ion-spinner>
+
 </ion-content>
+
+</body>
