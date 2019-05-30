@@ -15,7 +15,9 @@ export class TjommisHubService {
     public connectedusers: number;
     public randomNumber: number;
     public authenticated: boolean;
-    public messages: string[] = ['Messages:'];
+    public messages: string[] = ['system message'];
+    public rooms: Lobby[] = [];
+    public activeRoom: Lobby;
     public connected = this.hubConnection != null ? this.hubConnection.state == HubConnectionState.Connected : false;
     public getConnectionState() {
         return this.hubConnection != null ? this.hubConnection.state : 0;
@@ -25,14 +27,28 @@ export class TjommisHubService {
     constructor(public events: Events,
         public authService: AuthServiceService,) {}
 
-
+        
     SendMessage(message) {
-        this.hubConnection.send('SendMessage', message);
+        this.hubConnection.send('SendMessage',this.activeRoom.lobbyName,message);
     }
     Hangout()  {
         return this.hubConnection.invoke('TestHangout');
     }
-
+    updateInterests(interestList : string[]) : boolean {
+        console.log("updating interests:", interestList);
+        this.hubConnection.invoke("UpdateInterests",interestList).then(r=> {
+            console.log("Response",r);
+            if (r != null) {
+                this.connectionInfo = r;
+                return true;
+            }
+        }).catch(err => {
+            console.log("UpdateInterests failed", err)
+            return false;
+        });
+        console.log("Update interest function complete.");
+        return false;
+    }
     // Connect method for SignalR
     // Returns: Promise(resolve, reject)
     connect(accesstoken) {
@@ -42,7 +58,7 @@ export class TjommisHubService {
 
             // Create a new hub and connect it using accessToken from earlier
             this.hubConnection = new HubConnectionBuilder().
-             withUrl(this.authService.endPoint + '/tjommisHub',{accessTokenFactory: () => accesstoken}).build();
+             withUrl(this.authService.endPoint + this.authService.hubEndPoint,{accessTokenFactory: () => accesstoken}).build();
 
             // Register the callback functions (Maybe do this on component load)
             // Possibly let the components register the events directly to SignalR themselves,
@@ -54,10 +70,36 @@ export class TjommisHubService {
                 .start()
                 .then(() => resolve(true))
                 .catch(() => reject('Error while establishing connection :('));
+                
+            setInterval(() => this.reconnect(),5000);
         });
     }
+    reconnect() {
+            console.log("Monitoring connection...");
+            // If allready connected from earlier sessions, disconnect and reconnect
+            if (this.hubConnection != null) {
+                if (this.getConnectionState() == 1) { return; }
+                this.hubConnection.stop(); 
+            }
 
+            // Create a new hub and connect it using accessToken from earlier
+            this.hubConnection = new HubConnectionBuilder().
+             withUrl(this.authService.endPoint + this.authService.hubEndPoint,{accessTokenFactory: () => this.authService.loginToken}).build();
+
+            // Register the callback functions (Maybe do this on component load)
+            // Possibly let the components register the events directly to SignalR themselves,
+            // for now we are using ionics Event system
+            this.registerSignalRCallbacks(this.hubConnection);
+
+            // Start connect and return value
+            this.hubConnection
+                .start()
+                .then(() => console.log("connected"))
+                .catch(() => console.log('Error while establishing connection :('));
+
+    }
     registerSignalRCallbacks(hubConnection) {
+        
         hubConnection.on('messageBroadcastEvent', (user: string, message: string) => {
             const fullmessage = user + '> ' + message;
             this.messages.push(fullmessage);
@@ -70,16 +112,18 @@ export class TjommisHubService {
             this.events.publish('username', connectioninfo.userInfo.username);
         });
         hubConnection.on('infoGlobalEvent', (connectedusers: number) => {
-            this.connectedusers = connectedusers;
-            this.events.publish('connectedusers', connectedusers);
             console.log('connectedusers:', connectedusers);
         });
-        hubConnection.on('updateGuiTestEvent', (randomNumber: number) => {
-            this.randomNumber = randomNumber;
-            this.events.publish('randomNumber', randomNumber);
-            console.log('randomNumber:', randomNumber);
+        
+        hubConnection.on('message', (lobby: string, message: Message) => {
+            console.log('Message',lobby, message);
+            if (this.activeRoom.lobbyName == lobby) this.activeRoom.messages.push(message);
+            this.events.publish('message',lobby,message);
         });
         hubConnection.on('joinroom',(room: Lobby) => {
+            console.log("Joining room: ", room);
+            this.rooms.push(room);
+            this.activeRoom = room;
             this.events.publish('joinroom',room);
         });
         hubConnection.on('userjoin',(user: ExternalUser, lobby : Lobby) => {
@@ -95,6 +139,7 @@ export class TjommisHubService {
 }
 export class User {
     username : string;
+    interests : string[];
     lobbies : Lobby[];
 }
 export class InterestItem {
@@ -105,24 +150,27 @@ export class InterestItem {
 export class ConnectionInfo {
     userInfo : User;
     interestList : InterestItem[];
+
 }
 export class ExternalUser {
     username : string;
     lastname : string;
 }
 export class Message {
-    messagetype : string;
-    username : string;
-    message: string;
+    type : string;
+    user : string;
+    text: string;
     timestamp : Date;
 }
 export class Lobby {
-    public lobbyname : string;
+    public lobbyName : string;
     public members : ExternalUser[];
     public messages : Message[];
 }
 
 export class HangoutEventMessage {
+    public room: Lobby;
     public timeStamp : Date;
-    public totalUsers : number
+    public totalUsers : number;
+    public timeRunning: number;
 }

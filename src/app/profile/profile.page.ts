@@ -19,29 +19,18 @@ export class ProfilePage implements OnInit {
       public events: Events,
       private zone: NgZone) {
 
-
-
-    this.events.subscribe('randomNumber', (data) => {
-      this.onUpdateRandomNumber(data);
-    });
-
     this.events.subscribe('connectedusers', (data) => {
       this.onUpdateConnectedUsers(data);
     });
     this.events.subscribe('username', (data) => {
+      console.log("Profile.OnUpdateUserName",data);
       this.onUpdateUsername(data);
     });
   }
 
   username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
-  randomNumber: number = 0;
   connectedUsers: number = 0;
 
-  onUpdateRandomNumber = number => {
-    this.zone.run(() => {
-      this.randomNumber = number;
-    });
-  };
 
   onUpdateConnectedUsers = number => {
     this.zone.run(() => {
@@ -85,12 +74,17 @@ export class ProfilePage implements OnInit {
   animateClick() {
     anime({
       targets: 'chatWrapper',
-      translateY: [
-        {value: 0, duration: 1200},
-        {value: -200, duration: 800},
-      ],
-      duration: 2000,
+      translateY: '10vh',
+      duration: 300,
+      direction: 'alternate',
+      easing: 'easeInCubic',
+      scaleX: {
+        value: 1.05,
+        duration: 150,
+        delay: 268
+      },
       complete: () => {this.chat()}
     });
   }
+  
 }

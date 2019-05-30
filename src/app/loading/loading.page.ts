@@ -11,7 +11,9 @@ import { TjommisHubService, ExternalUser, Lobby, HangoutEventMessage } from '../
 export class LoadingPage implements OnInit {
   public totalUsers : number;
   public timeStart : Date = new Date();
-  public timeWorking : Date;
+  public timeRunning : number;
+  public lobbyName : string;
+  public members: ExternalUser[] = [];
 
   constructor(
     public router: Router,
@@ -28,18 +30,20 @@ export class LoadingPage implements OnInit {
     events.subscribe("hangoutevent", (eventArgs : HangoutEventMessage) => {
       console.log("hangoutevent",eventArgs);
       this.zone.run(() => {
+        this.lobbyName = eventArgs.room.lobbyName;
         this.totalUsers = eventArgs.totalUsers;
-        this.timeWorking = eventArgs.timeStamp;
+        this.timeRunning = eventArgs.timeRunning;
+        this.members = eventArgs.room.members;
       });
     });
 
-    events.subscribe("userinfo", (user: ExternalUser, lobby: Lobby) => {
+    events.subscribe("userjoin", (user: ExternalUser, lobby: Lobby) => {
       console.log("Join",user,lobby);
     });
 
 
     events.subscribe("lobbyinfo", (lobby: Lobby) => {
-      console.log("Joined",lobby);
+      console.log("lobbyinfo",lobby);
     });
   }
 

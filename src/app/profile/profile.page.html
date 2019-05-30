@@ -24,13 +24,12 @@
     <ion-footer>
         <ion-row class="btn_row">
             <ion-col text-center>
-                <span class="chatWrapper" (click)="animateClick()">
-                    <img class="chat_private" src="../../assets/img/ChatPrivate.png" (click)="chat()">
+                <span (click)="animateClick()" class="chatWrapper">
+                    <img class="chat_private" src="../../assets/img/ChatPrivate.png">
                 </span>
-                    <img class="chat_group" src="../../assets/img/chatGroup.png" (click)="chats()">
+                <img class="chat_group" src="../../assets/img/chatGroup.png" (click)="chats()">
             </ion-col>
         </ion-row>
-
         <ion-row class="interesse_row">
             <ion-col text-center>
                 <ion-button class="interesse_btn" (click)="interesser()">
