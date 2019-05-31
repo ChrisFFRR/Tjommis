@@ -8,17 +8,22 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
+<ion-content  padding text-wrap  [scrollEvents]="true" scrollX="true">
+    <ion-list>
+        <div class="item">
+            <ion-item no-padding *ngFor="let item of messages"
+                      [ngClass]="messageIsSelf(item) ? 'itemSelf' : 'itemExternal'">
+                <div class="messageWrapper">
+                    <div class="username">{{item.user}}</div>
+                    <div class="message">{{item.text}}</div>
+                </div>
+            </ion-item>
+        </div>
+    </ion-list>
+</ion-content>
 
-<ion-content padding text-wrap>
-    <div class="chatheader"></div>
-    <div class="item">
-        <ion-item *ngFor="let item of messages" [ngClass]="messageIsSelf(item) ? 'itemSelf' : 'itemExternal'">
-            {{item.user}} - {{item.text}}
-        </ion-item>
-    </div>
-
-    <ion-footer no-border>
-        <div class="chatWrapper">
+<ion-footer no-border translucent="true">
+    <ion-toolbar>
             <ion-item lines="none">
         <textarea class="inputField" type="text" placeholder="Skriv noe" [(ngModel)]="message"
                   (keyup.enter)="handleSendMessage()"></textarea>
@@ -26,6 +31,7 @@
                     <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
                 </ion-button>
             </ion-item>
-        </div>
-    </ion-footer>
-</ion-content>
+
+    </ion-toolbar>
+</ion-footer>
+
