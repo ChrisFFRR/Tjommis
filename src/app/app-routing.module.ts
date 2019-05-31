@@ -2,11 +2,6 @@ import { NgModule } from '@angular/core';
 import {  RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-
-
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   { path: 'welcome', loadChildren: './welcome/welcome.module#WelcomePageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'interesser', loadChildren: './interesser/interesser.module#InteresserPageModule' },
@@ -15,7 +10,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'registrate', loadChildren: './registrate/registrate.module#RegistratePageModule' },
   { path: 'error-page', loadChildren: './error-page/error-page.module#ErrorPagePageModule' },
-
+ 
+  { path: '', redirectTo: '/welcome', pathMatch: 'full' }
 ];
 
 @NgModule({

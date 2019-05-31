@@ -55,20 +55,16 @@ export class ProfilePage implements OnInit {
   }
 
   chat() {
-    /*
-    var returnvalue = this.tjommisHub.Hangout();
-    console.log("Moving to loading??",returnvalue);
-    if (returnvalue == true) {
-      this.router.navigateByUrl('/loading');
-    }*/
     this.tjommisHub.Hangout().then(e => {
       if (e) this.router.navigateByUrl('/loading');
-    })
-    //
+    }).catch(e => {
+        /* Todo: SnackBar feilmelding til bruker */
+      console.log("Hangout failed: ", e);
+    });
   }
 
   settings() {
-    this.router.navigateByUrl('/settings')
+    this.router.navigateByUrl('/settings');
   }
 
   animateClick() {

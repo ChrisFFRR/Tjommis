@@ -27,6 +27,7 @@ export class ChatPage implements OnInit {
   }
 
   private onAddMessage = () => {
+    // Update messages
     this.zone.run(() => {
       this.messages = this.tjommisHub.activeRoom.messages;
     })
