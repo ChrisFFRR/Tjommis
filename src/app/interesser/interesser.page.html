@@ -20,10 +20,10 @@
     </ion-grid>
 
     <ion-grid class="tagsGrid">
-        <ion-row>
+        <ion-row >
             <ion-col text-center>
                 <div *ngFor="let tag of tags">
-                    <div [ngSwitch]="isTagSelected(tag)">
+                    <div  [ngSwitch]="isTagSelected(tag)">
                         <div *ngSwitchCase="true">
                             <ion-button size="small" fill="outline" class="tagsBtnSelected"
                                 (click)="addTag(tag); tagClicked($event)">
