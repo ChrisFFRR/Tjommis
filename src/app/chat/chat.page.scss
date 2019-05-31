@@ -29,11 +29,10 @@ ion-content{
   top: 30px;
 }
 .chat{
-  /*align-content: center;
-  position: sticky;
-  top: 85%;
-  left: 20px;
-  min-width: 200px;  */
+  align-content: center;
+  position: absolute;
+  top: 75%
+
 }
 ion-footer{
   align-content: center;
@@ -61,6 +60,7 @@ ion-input{
   padding: 2px;
   display: flex;
   border-style: solid;
+
 }
 
 .chatbox{
