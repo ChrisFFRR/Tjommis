@@ -1,7 +1,7 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {TjommisHubService, HangoutEventMessage, Message} from "../services/tjommis-hub.service";
-import {Events} from "@ionic/angular";
+import {Events, IonContent} from "@ionic/angular";
 import { routerNgProbeToken } from'@angular/router/src/router_module';
 
 @Component({
@@ -10,7 +10,7 @@ import { routerNgProbeToken } from'@angular/router/src/router_module';
   styleUrls: ['./chat.page.scss'],
 })
 export class ChatPage implements OnInit {
-
+  @ViewChild(IonContent) content: IonContent;
   message: string;
   public messages: Message[] = this.tjommisHub.activeRoom.messages;
 
@@ -19,6 +19,7 @@ export class ChatPage implements OnInit {
       public tjommisHub: TjommisHubService,
       public events: Events,
       private zone: NgZone
+
   ) {
     events.subscribe("message",(lobby: string, message: Message) => {
       console.log("Chat message received:" , lobby, message);
@@ -35,6 +36,7 @@ export class ChatPage implements OnInit {
     // Update messages
     this.zone.run(() => {
       this.messages = this.tjommisHub.activeRoom.messages;
+      this.content.scrollToBottom(300);
     })
   };
 
