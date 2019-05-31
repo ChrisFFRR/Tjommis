@@ -1,20 +1,40 @@
-ion-content{
-  --ion-background-color:  #E6B3FF !important;
+ion-content {
+  --background: var(--ion-background-color);
 }
-.logoWrapper {
-  width: 100%;
-  height: 180px;
-}
-.logoPic {
-  width: 50px;
-  margin: auto;
-  display: block;
-  --ion-background-color:  #E6B3FF !important;
 
+ion-toolbar {
+  --background: rgba(0,0,0,0);
+  --height: 75px;
 }
+
+ion-back-button.button {
+  --color: var(--ion-color-border);
+  --padding-start: 0;
+  --padding-end: 0;
+  --margin-inline-end: 0 !important;
+  --margin-inline-start: 0 !important;
+  -webkit-margin-end: 0 !important;
+}
+
+ion-item {
+  --background: rgba(0,0,0,0);
+}
+
+.logoHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border: 2px red solid;
+}
+
+.logoPic {
+  width: 30px;
+}
+
 .button{
   position: sticky;
-  top: 0px;
+  top: 0;
   background: Transparent no-repeat;
   border: none;
   cursor:pointer;
@@ -28,7 +48,7 @@ ion-content{
   position: relative;
   top: 30px;
 }
-.chat{
+.chatWrapper{
   align-content: center;
   position: absolute;
   top: 75%
@@ -62,6 +82,7 @@ ion-input{
   border-style: solid;
 
 }
+
 
 .chatbox{
   border-top-left-radius: 5px;
