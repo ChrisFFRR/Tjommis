@@ -17,9 +17,9 @@ export class RegistratePage implements OnInit {
   lastName: string = "";
   password: string = "";
   email: string = "";
-  Institutt: string[] = ["Kristiania", "Skole 2", "Skole 3"];
+  Institutt: string[] = ["Kristiania", "UiO", "BI"];
   selectedInstitutt: string;
-  Studie: string[] = ["Studie 1", "Studie 2", "Studie 3"];
+  Studie: string[] = ["E-business","Frontend- og mobilutvikling", "Interaktivt design", "Intellingente systemer", "Programmering", "Spillprogrammering"];
   selectedStudie: string;
 
   isPosting : boolean = false;
