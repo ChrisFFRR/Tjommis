@@ -7,10 +7,13 @@
 </ion-header>
 
 <ion-content padding text-wrap>
-  <ion-back-button>
-  </ion-back-button>
-  <div id="chatheader" class="ion-text-center"><h1>Slå av en prat</h1></div>
-  <div clas="item">
+
+  <img class="logoPic" alt="company_logo" src="../../assets/img/logoalenegul.png"/>
+  <button class="button" (click)="toHome()">
+  </button>
+  <div class="chatheader"></div>
+  <div class="item">
+
     <ion-item *ngFor="let item of messages">
       <div class ="itemto">
         {{item.timestamp}} - {{item.user}} - {{item.text}}
@@ -18,14 +21,12 @@
     </ion-item>
   </div>
 
+  <div class="chat">
+    <ion-item id="rounded">
+      <ion-input type="text" fixed="Type in Message to send" [(ngModel)]="message"
+                 (keyup.enter)="handleSendMessage()"></ion-input>
+    </ion-item>
 
+  </div>
 
-  <ion-footer>
-    <div class="chat">
-      <ion-item>
-        <ion-input fixed="Type in Message to send" [(ngModel)]="message"
-                   (keyup.enter)="handleSendMessage()"></ion-input>
-      </ion-item>
-    </div>
-  </ion-footer>
 </ion-content>

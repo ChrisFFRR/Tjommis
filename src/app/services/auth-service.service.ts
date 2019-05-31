@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class AuthServiceService {  
-    public endPoint : string = "";//"https://smidigprosjekt.azurewebsites.net";
+    public endPoint : string = "https://smidigprosjekt.azurewebsites.net";
     public tokenUrl = this.endPoint + '/token';
     //public tokenUrl = this.endPoint + '/developer_token';
     //public hubEndPoint = 'https://localhost:5001/tjommisHub';//'/tjommisHub';
