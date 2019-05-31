@@ -16,6 +16,7 @@ export class AuthServiceService {
     public loginToken: string;
     constructor(public http: HttpClient) {}
 
+
     login(credentials) {
         return new Promise((resolve, reject) => {
             const  headers = new  HttpHeaders().set("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");

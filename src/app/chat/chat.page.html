@@ -13,8 +13,11 @@
     <div class="chatheader"></div>
     <div class="item">
         <ion-item *ngFor="let item of messages">
-            <div class="itemto">
-                {{item.timestamp}} - {{item.user}} - {{item.text}}
+            <div class="itemSelf" *ngIf="messageIsSelf(item)">
+                 {{item.user}} - {{item.text}}
+            </div>
+            <div class="itemExternal" *ngIf="!messageIsSelf(item)">
+                {{item.user}} - {{item.text}}
             </div>
         </ion-item>
     </div>

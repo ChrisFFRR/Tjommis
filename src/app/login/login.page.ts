@@ -18,6 +18,7 @@ export class LoginPage implements OnInit {
     password: string = "";
     errorMessage: string = "";
 
+
     constructor(public router: Router,
                 public authService: AuthServiceService,
                 public tjommisHub: TjommisHubService,

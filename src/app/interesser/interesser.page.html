@@ -21,8 +21,8 @@
 
     <ion-grid class="tagsGrid">
         <ion-row >
-            <ion-col text-center>
-                <div *ngFor="let tag of tags">
+            <ion-col  *ngFor="let tag of tags" text-center>
+
                     <div  [ngSwitch]="isTagSelected(tag)">
                         <div *ngSwitchCase="true">
                             <ion-button size="small" fill="outline" class="tagsBtnSelected"
@@ -37,7 +37,7 @@
                             </ion-button>
                         </div>
                     </div>
-                </div>
+
             </ion-col>
         </ion-row>
     </ion-grid>
