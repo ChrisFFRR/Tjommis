@@ -1,0 +1,10 @@
+For å sende melding
+[(ngModel)]="message"
+                   (keyup.enter)="handleSendMessage()">
+
+For å vise chatmeldinger
+ <ion-item *ngFor="let item of messages">
+      <div>
+        {{item.timestamp}} - {{item.user}} - {{item.text}}
+      </div>
+    </ion-item>

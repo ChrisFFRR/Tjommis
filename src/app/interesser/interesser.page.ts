@@ -49,9 +49,6 @@ export class InteresserPage implements OnInit {
             );
         });
     }
-    tagClicked(tagBtn) {
-
-    };
 
     addTag(tag : InterestItem) {
         console.log("addTag");
