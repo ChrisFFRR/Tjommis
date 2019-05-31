@@ -34,7 +34,21 @@ export class TjommisHubService {
     Hangout()  {
         return this.hubConnection.invoke('TestHangout');
     }
-
+    updateInterests(interestList : string[]) : boolean {
+        console.log("updating interests:", interestList);
+        this.hubConnection.invoke("UpdateInterests",interestList).then(r=> {
+            console.log("Response",r);
+            if (r != null) {
+                this.connectionInfo = r;
+                return true;
+            }
+        }).catch(err => {
+            console.log("UpdateInterests failed", err)
+            return false;
+        });
+        console.log("Update interest function complete.");
+        return false;
+    }
     // Connect method for SignalR
     // Returns: Promise(resolve, reject)
     connect(accesstoken) {
@@ -125,6 +139,7 @@ export class TjommisHubService {
 }
 export class User {
     username : string;
+    interests : string[];
     lobbies : Lobby[];
 }
 export class InterestItem {
@@ -135,6 +150,7 @@ export class InterestItem {
 export class ConnectionInfo {
     userInfo : User;
     interestList : InterestItem[];
+
 }
 export class ExternalUser {
     username : string;

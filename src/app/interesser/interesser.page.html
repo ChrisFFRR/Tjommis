@@ -1,36 +1,50 @@
-<ion-header>
-  <ion-toolbar transparent>
-    <ion-buttons slot="primary">
-      <button  class="hamburger_menu">
-        <img src="assets/icon/hamburger_btn.svg">
-      </button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="profile"></ion-back-button>
+        </ion-buttons>
+        <h4 class="h1_interesser">HVILKE INTERESSER HAR DU?</h4>
+    </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-    <ion-grid>
-    <ion-row>
-    <ion-col *ngFor="let item of items" col-6 >
-       <ion-button (click)="tags=item.tag" (click)="btnActivate($event)" >
-          {{item.title}}
-       </ion-button>
-    </ion-col>
-    </ion-row>
+    <ion-grid class="categoryGrid">
+        <ion-row>
+            <ion-col *ngFor="let item of categories" text-center>
+                <ion-button class="kategoriBtn" (click)="setActiveCategory(item)">
+                    {{item}}
+                </ion-button>
+            </ion-col>
+        </ion-row>
     </ion-grid>
 
-    <ion-grid class="TAG_TEXT">
+    <ion-grid class="tagsGrid">
         <ion-row>
-            <ion-col>
-                <div class="tags_div" text-center>
-                    <ion-buttons>
-                        <ion-button #itags color="light" *ngFor="let tag of tags" (click)="selectTags(tag)" (click)="btnTags(itags)">
-                          <p class="tag_txt">{{ tag }}</p>
-                        </ion-button>
-                    </ion-buttons>
+            <ion-col text-center>
+                <div *ngFor="let tag of tags">
+                    <div [ngSwitch]="isTagSelected(tag)">
+                        <div *ngSwitchCase="true">
+                            <ion-button size="small" fill="outline" class="tagsBtnSelected"
+                                (click)="addTag(tag); tagClicked($event)">
+                                {{ tag.name }}
+                            </ion-button>
+                        </div>
+                        <div *ngSwitchDefault>
+                            <ion-button size="small" fill="selectedoutline" class="tagsBtn"
+                                (click)="addTag(tag); tagClicked($event)">
+                                {{ tag.name }}
+                            </ion-button>
+                        </div>
+                    </div>
                 </div>
             </ion-col>
         </ion-row>
     </ion-grid>
+    <ion-footer no-border>
+        <ion-toolbar>
+            <ion-button class="lagreBtn" slot="end" (click)="saveInterests()">LAGRE</ion-button>
+        </ion-toolbar>
+    </ion-footer>
+
 </ion-content>

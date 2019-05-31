@@ -1,28 +1,82 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {Observable} from "rxjs";
-import {NavController} from "@ionic/angular";
+import { Component, OnInit, NgZone } from '@angular/core';
+import { Router } from "@angular/router";
+import { TjommisHubService, InterestItem } from "../services/tjommis-hub.service";
 
 
 @Component({
-  selector: 'app-interesser',
-  templateUrl: './interesser.page.html',
-  styleUrls: ['./interesser.page.scss'],
+    selector: 'app-interesser',
+    templateUrl: './interesser.page.html',
+    styleUrls: ['./interesser.page.scss'],
 })
 export class InteresserPage implements OnInit {
-  data:Observable<any>;
-  items:any;
-  url:string;
+    items: any;
+    url: string;
 
-  public tags: any[] = [];
-  public selectedTags: any[] = [];
+    public categories: Set<string> = new Set<string>();
+    public activeCategory: string;
+    public tags: Set<InterestItem> = new Set<InterestItem>();
+    public selectedTags: string[] = [];
+
+    constructor(
+        public router: Router,
+        public tjommisHub: TjommisHubService,
+        public zone: NgZone
+    ) {
+    }
+    public isTagSelected(tag: InterestItem): boolean {
+        if (this.selectedTags.includes(tag.name)) return true;
+        return false;
+    }
+
+    ionViewWillEnter() {
+        console.log("ConnectionInfoObject: ", this.tjommisHub.connectionInfo);
+        this.categories = new Set<string>(Array.from(this.tjommisHub.connectionInfo.interestList, e => e.category));
+        this.selectedTags = this.tjommisHub.connectionInfo.userInfo.interests;
+        console.log("Categories:", this.categories, "selections", this.selectedTags);
+    }
 
 
-  constructor(public router: Router) {
-      this.getData()
-  }
+    setActiveCategory(category: string) {
+        this.activeCategory = category;
+        this.zone.run(() => {
+
+            let result = this.tjommisHub.connectionInfo.interestList.filter(e => e.category.includes(this.activeCategory));
+
+            this.tags = new Set(
+                Array.from(
+                    result
+                )
+            );
+        });
+    }
+    tagClicked(tagBtn) {
+
+    };
+
+    addTag(tag : InterestItem) {
+        console.log("addTag");
+        this.zone.run(() => {
+            this.selectedTags.includes(tag.name) ? this.selectedTags = this.selectedTags.filter(e => e != tag.name) : this.selectedTags.push(tag.name);
+            console.log(this.selectedTags);
+        });
+    }
+    saveInterests() {
+        if (this.tjommisHub.updateInterests(this.selectedTags)) {
+            this.router.navigateByUrl('/profile');
+        }
+        else {
+            console.log("Could not update interests");
+        }
+    }
+    ngOnInit() {
+    }
+}
+
+/*
+
   getData()
   {
+
         this.items = [
             {"title": "Gaming",
                  "tag": ["#PS4", "#XBOX", "#PC","#LoL", "#Dota2", "#WoW"]
@@ -52,23 +106,4 @@ export class InteresserPage implements OnInit {
                 "tag": ["#Vorspiel", "#Nachspiel", "#Hjemmefest", "#Låvefest", "#Alkoholfritt"]
             },
             ]
-  }
-
-  btnActivate(ionicButton) {
-    ionicButton._color === 'dark' ? ionicButton.color = 'primary' : ionicButton.color = 'dark';
-  };
-  btnTags(ionicButton) {
-    ionicButton._color === 'light' ? ionicButton.color = 'primary' : ionicButton.color = 'light';
-  };
-
-  selectTags(tag) {
-    this.selectedTags.includes(tag) ? console.log("tag already selected") : this.selectedTags.push(tag);
-  }
-
-  toMain() {
-    this.router.navigateByUrl('/profile');
-  }
-  ngOnInit() {
-  }
-
-}
+  }*/
