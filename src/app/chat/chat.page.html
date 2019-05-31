@@ -3,9 +3,9 @@
         <ion-buttons slot="start">
             <ion-back-button class="button" defaultHref="/profile"></ion-back-button>
         </ion-buttons>
-       <ion-title>
+        <ion-title>
             <img class="logoPic" alt="company_logo" src="../../assets/img/logoalenegul.png"/>
-       </ion-title>
+        </ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -18,10 +18,15 @@
             </div>
         </ion-item>
     </div>
+
+<ion-footer no-border>
     <div class="chatWrapper">
         <ion-item lines="none">
-            <ion-input class="inputField" type="text" fixed="Type in Message to send" [(ngModel)]="message"
-                       (keyup.enter)="handleSendMessage()"></ion-input>
+        <textarea class="inputField" type="text" placeholder="Skriv noe" [(ngModel)]="message"
+                  (keyup.enter)="handleSendMessage()"></textarea>
+            <ion-button class="sendBtn" icon-only item-right (click)="handleSendMessage()">
+            <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon></ion-button>
         </ion-item>
     </div>
+</ion-footer>
 </ion-content>

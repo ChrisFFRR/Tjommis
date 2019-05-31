@@ -1,10 +1,17 @@
 ion-content {
   --background: var(--ion-background-color);
+  --overflow: hidden;
 }
 
 ion-toolbar {
   --background: rgba(0,0,0,0);
   --height: 75px;
+}
+
+ion-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
 }
 
 ion-back-button.button {
@@ -20,85 +27,41 @@ ion-item {
   --background: rgba(0,0,0,0);
 }
 
-.logoHeader {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  border: 2px red solid;
-}
 
 .logoPic {
   width: 30px;
 }
 
-.button{
-  position: sticky;
-  top: 0;
-  background: Transparent no-repeat;
-  border: none;
-  cursor:pointer;
-  overflow: hidden;
-
-}
-.chatheader{
-
-}
-.item{
-  position: relative;
-  top: 30px;
-}
-.chatWrapper{
-  align-content: center;
-  position: absolute;
-  top: 75%
-
-}
-ion-footer{
-  align-content: center;
-  position: sticky;
-  top: 85%;
-  left: 20px;
-  min-width: 200px;
-}
-.ion-item{
-  --background: white;
-  background-color: white;
-  padding-left: 10px;
-  border-left-width: 20px;
-}
-
 .item{
   font-size: 1rem;
-
 }
-ion-input{
+
+.inputField{
   --background: white;
-  background-color: white;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2px;
-  display: flex;
-  border-style: solid;
+  border: 1px solid var(--ion-color-border);
 
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 1px;
 }
 
+textarea {
+  resize: none;
+  width: 300px;
+  height: 50px;
+}
+.sendBtn {
+  height: 50px;
+}
 
 .chatbox{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.4);
   margin-bottom: 1px;
 }
-
+/*
 .itemto{
   position: absolute;
   top: 10px;
-
 }
-
-.title{
-  position: fixed;
-  top: 50px;
-  left: 150px;
-}
+*/
