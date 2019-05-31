@@ -1,72 +1,62 @@
-ion-content{
-  --ion-background-color:  #E6B3FF !important;
+ion-content {
+  --background: var(--ion-background-color);
+  --overflow: hidden;
 }
-.logoWrapper {
-  width: 100%;
-  height: 180px;
-}
-.logoPic {
-  width: 50px;
-  margin: auto;
-  display: block;
-  --ion-background-color:  #E6B3FF !important;
 
+ion-toolbar {
+  --background: rgba(0,0,0,0);
+  --height: 75px;
 }
-.button{
-  position: sticky;
-  top: 0px;
-  background: Transparent no-repeat;
-  border: none;
-  cursor:pointer;
-  overflow: hidden;
 
-}
-.chatheader{
-
-}
-.item{
-  position: relative;
-  top: 30px;
-}
-.chat{
-  align-content: center;
+ion-footer {
   position: absolute;
-  top: 75%
+  bottom: 10px;
+  left: 0;
+}
 
+ion-back-button.button {
+  --color: var(--ion-color-border);
+  --padding-start: 0;
+  --padding-end: 0;
+  --margin-inline-end: 0 !important;
+  --margin-inline-start: 0 !important;
+  -webkit-margin-end: 0 !important;
 }
-ion-footer{
-  align-content: center;
-  position: sticky;
-  top: 85%;
-  left: 20px;
-  min-width: 200px;
+
+ion-item {
+  --background: rgba(0,0,0,0);
 }
-.ion-item{
-  --background: white;
-  background-color: white;
-  padding-left: 10px;
-  border-left-width: 20px;
+
+
+.logoPic {
+  width: 30px;
 }
 
 .item{
   font-size: 1rem;
-
 }
-ion-input{
-  --background: white;
-  background-color: white;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2px;
-  display: flex;
-  border-style: solid;
 
+.inputField{
+  --background: white;
+  border: 1px solid var(--ion-color-border);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-bottom: 1px;
+}
+
+textarea {
+  resize: none;
+  width: 300px;
+  height: 50px;
+}
+
+.sendBtn {
+  height: 50px;
 }
 
 .chatbox{
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.4);
   margin-bottom: 1px;
 }
 
@@ -76,8 +66,11 @@ ion-input{
 
 }
 
-.title{
-  position: fixed;
-  top: 50px;
-  left: 150px;
+.itemself {
+  border: 2px red solid;
 }
+
+.itemExternal {
+  border: 2px white solid;
+}
+
