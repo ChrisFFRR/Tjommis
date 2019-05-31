@@ -12,13 +12,8 @@
 <ion-content padding text-wrap>
     <div class="chatheader"></div>
     <div class="item">
-        <ion-item *ngFor="let item of messages">
-            <div class="itemSelf" *ngIf="messageIsSelf(item)">
-                 {{item.user}} - {{item.text}}
-            </div>
-            <div class="itemExternal" *ngIf="!messageIsSelf(item)">
-                {{item.user}} - {{item.text}}
-            </div>
+        <ion-item *ngFor="let item of messages" [ngClass]="messageIsSelf(item) ? 'itemSelf' : 'itemExternal'">
+            {{item.user}} - {{item.text}}
         </ion-item>
     </div>
 

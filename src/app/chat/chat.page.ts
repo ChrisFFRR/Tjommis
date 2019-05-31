@@ -27,6 +27,7 @@ export class ChatPage implements OnInit {
   }
 
   messageIsSelf(msg : Message) {
+    console.log(msg, "conninfo", this.tjommisHub.connectionInfo.userInfo);
       return msg.user.toLowerCase() == this.tjommisHub.connectionInfo.userInfo.username.toLowerCase();
   }
 
