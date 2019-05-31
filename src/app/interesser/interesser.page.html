@@ -27,7 +27,7 @@
                 size="small"
                 fill="outline"
                 [ngClass]="isTagSelected(tag) ? 'tagsBtnSelected' : 'tagsBtn'"
-                (click)="addTag(tag); tagClicked($event)">
+                (click)="addTag(tag);">
                 {{ tag.name }}
             </ion-button>
 
