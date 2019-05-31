@@ -23,14 +23,14 @@
         <ion-row >
             <ion-col  *ngFor="let tag of tags" text-center>
 
-            <ion-button 
-                size="small" 
-                fill="outline" 
+            <ion-button
+                size="small"
+                fill="outline"
                 [ngClass]="isTagSelected(tag) ? 'tagsBtnSelected' : 'tagsBtn'"
                 (click)="addTag(tag); tagClicked($event)">
                 {{ tag.name }}
             </ion-button>
-    
+
             </ion-col>
         </ion-row>
     </ion-grid>
