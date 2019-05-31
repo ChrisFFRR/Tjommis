@@ -2,9 +2,8 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TjommisHubService, HangoutEventMessage, Message} from "../services/tjommis-hub.service";
 import {Events} from "@ionic/angular";
-import {LoginPage} from "../login/login.page";
-import { routerNgProbeToken } from '@angular/router/src/router_module';
-
+import { routerNgProbeToken } from'@angular/router/src/router_module';
+ 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
@@ -18,7 +17,6 @@ export class ChatPage implements OnInit {
   constructor(
       public router: Router,
       public tjommisHub: TjommisHubService,
-      public login: LoginPage,
       public events: Events,
       private zone: NgZone
   ) {

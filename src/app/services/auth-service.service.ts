@@ -22,7 +22,6 @@ export class AuthServiceService {
             let loginData = "username=" + credentials.username +
              "&password=" + encodeURIComponent(credentials.password) +
              "&grant_type=password&client_id=tjommisdemo2018_signing_key_that_should_be_very_long";
-    
             this.http
             .post<any>(this.tokenUrl, loginData,{headers, responseType: 'json'})
             .subscribe(res => {
