@@ -2,19 +2,23 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { Events } from '@ionic/angular';
 import { Router } from "@angular/router";
 import { TjommisHubService, ExternalUser, Lobby, HangoutEventMessage } from '../services/tjommis-hub.service';
+import {Observable, interval} from 'rxjs';
+import { async } from 'q';
 
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.page.html',
   styleUrls: ['./loading.page.scss'],
 })
+
 export class LoadingPage implements OnInit {
   public totalUsers: number;
   public timeStart: Date = new Date();
   public timeRunning: number;
   public lobbyName: string = '';
   public members: ExternalUser[] = [];
-
+  public quotes: string[] = ["Hei på deg", "Livets harde skole","test1","test2","test3"];
+  public randomQuote:string = '';
 
   constructor(
     public router: Router,
@@ -53,11 +57,20 @@ export class LoadingPage implements OnInit {
     if (this.tjommisHub.getConnectionState() == 0) {
       this.router.navigateByUrl("/login");
     }
-
-    
+    const quoteObservable = new interval(1000);
+    //observer => {
+    //  setInterval(() => {
+    //    observer.next(this.randomQuotes());
+    //  },1000);
+    //});
+    quoteObservable.subscribe((sequence: number) => {
+      this.randomQuote = this.randomQuotes();
+    });
 
   }
 
-
-
+  randomQuotes() {
+    var randomQuote = this.quotes[Math.floor(Math.random()*this.quotes.length)];
+    return randomQuote;
+  }
 }
