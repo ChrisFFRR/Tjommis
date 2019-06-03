@@ -1,17 +1,24 @@
 <head>
-    <link rel="stylesheet" href="animate.min.css">
+
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   </head>
+</head>
+
 <body>
 
-  <ion-content>
+  <ion-header>
 
-
-    <div class=lobbyInfo>
-      <!-- Lobbynavn endres -->
-      <h4>{{lobbyName}}</h4>
+    <ion-toolbar>
       <!-- Gjøre om vi matcher deg til dynamisk med info om når en match har oppstått -->
-      <p class="animated bounce delay-2s">Vi matcher deg!</p>
-    </div>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="profile" slot="start"></ion-back-button>
+      </ion-buttons>
+      
+    </ion-toolbar>
+
+    </ion-header>
+  <ion-content>
 
 
     <div class=quotes>
@@ -19,15 +26,7 @@
 
     </div>
 
-    <!-- 
-
-  <ion-item *ngFor="let member of members">
-    {{member.username}}
-  </ion-item>
-
-  -->
-
-
+    <ion-textarea class="animated infinite bounce delay-2s" color ="primary" slot="primary">Vi matcher deg!</ion-textarea>
 
     <div class=loadingSpinner *ngIf="lobbyName==''">
       <ion-spinner name="crescent"></ion-spinner>
