@@ -16,12 +16,12 @@ ion-back-button.button {
   --margin-inline-end: 0 !important;
   --margin-inline-start: 0 !important;
   -webkit-margin-end: 0 !important;
-
 }
 
 .categoryGrid, .tagsGrid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .kategoriBtn {
@@ -34,8 +34,13 @@ ion-back-button.button {
   --border-width: 2px !important;
   --border-color: var(--ion-color-border) !important;
   --color: var(--ion-color-secondary-contrast) !important;
-
-
+}
+.tagsBtnSelected {
+  --background: var(--ion-color-border);
+  --border-style: solid !important;
+  --border-width: 2px !important;
+  --border-color: var(--ion-color-border) !important;
+  --color: black !important;
 }
 
 .lagreBtn {

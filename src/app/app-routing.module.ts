@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'registrate', loadChildren: './registrate/registrate.module#RegistratePageModule' },
   { path: 'error-page', loadChildren: './error-page/error-page.module#ErrorPagePageModule' },
-
+ 
 ];
 
 @NgModule({
