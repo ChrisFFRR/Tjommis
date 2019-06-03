@@ -54,8 +54,7 @@ export class LoadingPage implements OnInit {
       this.router.navigateByUrl("/login");
     }
 
-    setTimeout(() => {
-    }, 5000);
+    
 
   }
 
