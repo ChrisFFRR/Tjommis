@@ -11,21 +11,13 @@ ion-list {
   --background-color: rgba(0,0,0,0);
   background-color: rgba(0,0,0,0);
 }
-ion-header {
-  --height: 0px;
-  --ion-safe-area-top: 0px;
-}
-
 ion-col {
   --background-color: rgba(0,0,0,0);
 }
 
-
-
 ion-toolbar{
   --background: rgba(0, 0, 0, 0);
   --height: 75px;
-  --ion-safe-area-top: 0px;
 }
 
 
@@ -127,16 +119,10 @@ ion-item.itemSelf {
   padding-left: 0;
 }
 
-ion-item.itemSelf > .messageWrapper > .username {
-  text-align: left;
-}
 
 ion-item.itemExternal {
  --inner-padding-start: 0 !important;
   --inner-padding-end: 0 !important;
-
-
-
 }
 
 .itemExternal {
