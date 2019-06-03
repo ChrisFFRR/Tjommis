@@ -20,24 +20,17 @@
     </ion-grid>
 
     <ion-grid class="tagsGrid">
-        <ion-row>
-            <ion-col text-center>
-                <div *ngFor="let tag of tags">
-                    <div [ngSwitch]="isTagSelected(tag)">
-                        <div *ngSwitchCase="true">
-                            <ion-button size="small" fill="outline" class="tagsBtnSelected"
-                                (click)="addTag(tag); tagClicked($event)">
-                                {{ tag.name }}
-                            </ion-button>
-                        </div>
-                        <div *ngSwitchDefault>
-                            <ion-button size="small" fill="selectedoutline" class="tagsBtn"
-                                (click)="addTag(tag); tagClicked($event)">
-                                {{ tag.name }}
-                            </ion-button>
-                        </div>
-                    </div>
-                </div>
+        <ion-row >
+            <ion-col  *ngFor="let tag of tags" text-center>
+
+            <ion-button
+                size="small"
+                fill="outline"
+                [ngClass]="isTagSelected(tag) ? 'tagsBtnSelected' : 'tagsBtn'"
+                (click)="addTag(tag);">
+                {{ tag.name }}
+            </ion-button>
+
             </ion-col>
         </ion-row>
     </ion-grid>

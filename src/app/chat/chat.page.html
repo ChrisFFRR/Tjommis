@@ -1,31 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/profile"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button class="button" defaultHref="/profile"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <img class="logoPic" alt="company_logo" src="../../assets/img/logoalenegul.png"/>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
-
-<ion-content padding text-wrap>
-  <ion-back-button>
-  </ion-back-button>
-  <div id="chatheader" class="ion-text-center"><h1>Slå av en prat</h1></div>
-  <div clas="item">
-    <ion-item *ngFor="let item of messages">
-      <div class ="itemto">
-        {{item.timestamp}} - {{item.user}} - {{item.text}}
-      </div>
-    </ion-item>
-  </div>
-
-
-
-  <ion-footer>
-    <div class="chat">
-      <ion-item>
-        <ion-input fixed="Type in Message to send" [(ngModel)]="message"
-                   (keyup.enter)="handleSendMessage()"></ion-input>
-      </ion-item>
-    </div>
-  </ion-footer>
+<ion-content  padding text-wrap  [scrollEvents]="true" scrollX="true">
+    <ion-list>
+        <div class="item">
+            <ion-item no-padding *ngFor="let item of messages"
+                      [ngClass]="messageIsSelf(item) ? 'itemSelf' : 'itemExternal'">
+                <div class="messageWrapper">
+                    <div class="username">{{item.user}}</div>
+                    <div class="message">{{item.text}}</div>
+                </div>
+            </ion-item>
+        </div>
+    </ion-list>
 </ion-content>
+
+<ion-footer no-border translucent="true">
+    <ion-toolbar>
+            <ion-item lines="none">
+        <textarea class="inputField" type="text" placeholder="Skriv noe" [(ngModel)]="message"
+                  (keyup.enter)="handleSendMessage()"></textarea>
+                <ion-button class="sendBtn" icon-only item-right (click)="handleSendMessage()">
+                    <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+                </ion-button>
+            </ion-item>
+
+    </ion-toolbar>
+</ion-footer>
+

@@ -56,9 +56,11 @@ export class TjommisHubService {
             // If allready connected from earlier sessions, disconnect and reconnect
             if (this.hubConnection != null) { this.hubConnection.stop(); }
 
+            console.log(accesstoken);
             // Create a new hub and connect it using accessToken from earlier
-            this.hubConnection = new HubConnectionBuilder().
-             withUrl(this.authService.endPoint + this.authService.hubEndPoint,{accessTokenFactory: () => accesstoken}).build();
+            this.hubConnection = new HubConnectionBuilder()
+            .withUrl(this.authService.endPoint + this.authService.hubEndPoint,{accessTokenFactory: () => accesstoken})
+             .build();
 
             // Register the callback functions (Maybe do this on component load)
             // Possibly let the components register the events directly to SignalR themselves,
@@ -75,6 +77,7 @@ export class TjommisHubService {
         });
     }
     reconnect() {
+        
             console.log("Monitoring connection...");
             // If allready connected from earlier sessions, disconnect and reconnect
             if (this.hubConnection != null) {
@@ -84,7 +87,8 @@ export class TjommisHubService {
 
             // Create a new hub and connect it using accessToken from earlier
             this.hubConnection = new HubConnectionBuilder().
-             withUrl(this.authService.endPoint + this.authService.hubEndPoint,{accessTokenFactory: () => this.authService.loginToken}).build();
+             withUrl(this.authService.endPoint + this.authService.hubEndPoint,{accessTokenFactory: () => this.authService.loginToken})
+             .build();
 
             // Register the callback functions (Maybe do this on component load)
             // Possibly let the components register the events directly to SignalR themselves,
