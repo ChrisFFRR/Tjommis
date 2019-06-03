@@ -1,0 +1,29 @@
+ion-content {
+    --offset-top: 20px;
+}
+
+ion-spinner {
+    width: 60px !important;
+    height: 60px !important;
+
+}
+
+ion-toolbar {
+    --height: 75px;
+    --ion-safe-area-top: 0px;
+}
+
+ion-header{
+    --height: 0px;
+    --ion-safe-area-top: 0px;
+  }
+
+
+.loadingSpinner {
+    padding-top: 100px;
+    align-content: center;  
+}
+
+.quotes {
+    font-style: italic;
+}

@@ -1,14 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>loading - {{timeRunning}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<head>
 
-<ion-content>
-  <ion-item>
-    <h4>{{lobbyName}}</h4>
-  </ion-item>
-  <ion-item *ngFor="let member of members">
-    {{member.username}}
-  </ion-item>
-</ion-content>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  </head>
+</head>
+
+<body>
+
+  <ion-header no-border>
+
+    <ion-toolbar mode="ios">
+      <!-- Gjøre om vi matcher deg til dynamisk med info om når en match har oppstått -->
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="profile" slot="start"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        <img class="logoPic" alt="company_logo" src="../../assets/img/logoalenegul.png" />
+      </ion-title>
+
+    </ion-toolbar>
+
+  </ion-header>
+  <ion-content>
+
+
+
+    <ion-textarea class=quotes>
+      {{randomQuote}}
+    </ion-textarea>
+
+
+    <ion-textarea class="animated infinite bounce delay-2s" color="primary" slot="primary">Vi matcher deg!
+    </ion-textarea>
+
+    <div class=loadingSpinner *ngIf="lobbyName==''">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <ion-item *ngIf="lobbyName!=''">
+      <ion-textarea *ngFor="let member of members">
+        {{member.username}}
+      </ion-textarea>
+    </ion-item>
+
+  </ion-content>
+
+</body>
