@@ -14,7 +14,7 @@
             <ion-col>
                 <ion-list lines="none">
                     <div class="item">
-                        <ion-item no-padding *ngFor="let item of messages"
+                        <ion-item class="scale-in-center" no-padding *ngFor="let item of messages"
                                   [ngClass]="messageIsSelf(item) ? 'itemSelf' : 'itemExternal'">
                             <div class="messageWrapper">
                                 <p class="username">{{item.user}}</p>
@@ -28,7 +28,7 @@
     </ion-grid>
 </ion-content>
 
-<ion-footer no-border translucent="true">
+<ion-footer no-border>
     <ion-toolbar>
         <ion-item lines="none">
         <textarea class="inputField" type="text" placeholder="Skriv noe" [(ngModel)]="message"
