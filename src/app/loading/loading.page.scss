@@ -1,4 +1,30 @@
+ion-content {
+    --offset-top: 20px;
+}
+
+ion-spinner {
+    width: 45px !important;
+    height: 45px !important;
+
+}
+
+.lobbyInfo {
+
+    align-content: center;
+    text-align: center;
+    padding-top: 100px;
+}
+
+
 .loadingSpinner {
-    align-content: center
+    padding-top: 100px;
+    align-content: center;
     
+    
+}
+
+.quotes {
+    
+    font-style: italic;
+
 }
