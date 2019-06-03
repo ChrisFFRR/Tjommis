@@ -9,9 +9,16 @@ ion-back-button.button{
   --margin-inline-start: 0 !important;
   -webkit-margin-end: 0 !important;
 }
+.logoPic {
+  width: 30px;
+}
+
+ion-header{
+  --ion-safe-area-top: 20px;
+}
 ion-toolbar{
   --background: rgba(0, 0, 0, 0);
-  --height: 45px;
+  --height: 1000px;
 }
 
 .registercard{
