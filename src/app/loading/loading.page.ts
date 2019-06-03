@@ -17,7 +17,7 @@ export class LoadingPage implements OnInit {
   public timeRunning: number;
   public lobbyName: string = '';
   public members: ExternalUser[] = [];
-  public quotes: string[] = ["Hei på deg", "Livets harde skole","test1","test2","test3"];
+  public quotes: string[] = ["I DECLARE....BANKRUPCTY - Michael Scott", "Livets harde skole","ppPPølserrr - Tangerudbakken","booyaahh!"];
   public randomQuote:string = '';
 
   constructor(
@@ -57,12 +57,8 @@ export class LoadingPage implements OnInit {
     if (this.tjommisHub.getConnectionState() == 0) {
       this.router.navigateByUrl("/login");
     }
-    const quoteObservable = interval(1000);
-    //observer => {
-    //  setInterval(() => {
-    //    observer.next(this.randomQuotes());
-    //  },1000);
-    //});
+    const quoteObservable = interval(3000);
+ 
     quoteObservable.subscribe((sequence: number) => {
       this.randomQuote = this.randomQuotes();
     });
