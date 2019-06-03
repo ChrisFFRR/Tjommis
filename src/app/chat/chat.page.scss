@@ -3,15 +3,24 @@ ion-content {
   --padding-bottom: 150px;
 }
 
+ion-content ion-list {
+  --ion-background-color: rgba(0,0,0,0);
+}
+
 ion-list {
-  --background: rgba(0,0,0,0);
+  --background-color: rgba(0,0,0,0);
   background-color: rgba(0,0,0,0);
 }
 ion-header{
   --height: 0px;
   --ion-safe-area-top: 0px;
 
+
+ion-col {
+  --background-color: rgba(0,0,0,0);
 }
+
+
 
 ion-toolbar{
   --background: rgba(0, 0, 0, 0);
@@ -33,6 +42,16 @@ ion-back-button.button {
   --margin-inline-end: 0 !important;
   --margin-inline-start: 0 !important;
   -webkit-margin-end: 0 !important;
+}
+
+ion-grid {
+  --ion-grid-width-xs:              100%;
+  --ion-grid-width-sm:              540px;
+  --ion-grid-width-md:              720px;
+  --ion-grid-width-lg:              960px;
+  --ion-grid-width-xl:              1140px;
+
+
 }
 
 ion-item {
@@ -62,63 +81,66 @@ textarea {
   height: 50px;
 }
 
-.chatbox {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin-bottom: 1px;
-}
 
 .messageContainer {
-  border: 2px red solid;
   height: 70vh;
-  overflow: hidden;
   white-space: nowrap;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  .scroll {
-    overflow: scroll;
-  }
 }
 
 .item {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
 }
 
 .messageWrapper {
   display: inline-grid;
   grid-template-rows: 1fr;
-
+  max-width: 280px;
 }
 
 .message {
-  border: 1px red solid;
+  border: 1px var(--ion-color-border) solid;
   background: var(--ion-color-secondary-contrast);
-  border-radius: 10px;
-  margin: 5px;
-  padding: 16px;
+  border-radius: 5px;
+  margin: 0 5px 5px;
+  padding: 5px;
+  text-align: left;
+  word-break: break-word;
+
+
 }
 
 .username {
-  font-size: 2rem;
-  clear: right;
+  font-size: 1.3rem;
+  color: var(--ion-color-border);
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .itemSelf {
   justify-self: start;
-  border: 2px red solid;
+
 }
 
 ion-item.itemSelf {
   padding-left: 0;
 }
 
+ion-item.itemSelf > .messageWrapper > .username {
+  text-align: left;
+}
+
+ion-item.itemExternal {
+ --inner-padding-start: 0 !important;
+  --inner-padding-end: 0 !important;
+
+
+
+}
+
 .itemExternal {
   justify-self: end;
-  border: 2px white solid;
 }
 
 .itemExternal .username {
