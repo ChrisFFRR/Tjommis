@@ -9,6 +9,12 @@ ion-footer {
   left: 0;
 }
 
+ion-footer {
+  ion-col {
+    padding: 0;
+  }
+}
+
 span.chatWrapper {
   display: inline-block;
 }
@@ -40,11 +46,11 @@ ion-button {
 .user_grid {
   padding: 0;
    margin-top: 1.2rem;
-   border: 2px white solid;
+
   }
 
 .user_col, .quote_container{
-  border: 2px red solid;
+
 }
 
 .user_col {
