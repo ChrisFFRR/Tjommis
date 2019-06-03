@@ -57,7 +57,7 @@ export class LoadingPage implements OnInit {
     if (this.tjommisHub.getConnectionState() == 0) {
       this.router.navigateByUrl("/login");
     }
-    const quoteObservable = new interval(1000);
+    const quoteObservable = interval(1000);
     //observer => {
     //  setInterval(() => {
     //    observer.next(this.randomQuotes());
