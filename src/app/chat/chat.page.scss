@@ -11,15 +11,21 @@ ion-list {
   --background-color: rgba(0,0,0,0);
   background-color: rgba(0,0,0,0);
 }
+ion-header{
+  --height: 0px;
+  --ion-safe-area-top: 0px;
+
 
 ion-col {
   --background-color: rgba(0,0,0,0);
 }
 
 
-ion-toolbar {
+
+ion-toolbar{
   --background: rgba(0, 0, 0, 0);
   --height: 75px;
+  --ion-safe-area-top: 0px;
 }
 
 
