@@ -3,12 +3,21 @@ ion-content {
   --padding-bottom: 150px;
 }
 
+
+
+
 ion-textarea {
   --background: rgba(0, 0, 0, 0);
 }
-
+.meatspin{
+  display: grid;
+  align-content: center;
+  vertical-align: center;
+}
 ion-item {
   --background: rgba(0, 0, 0, 0);
+
+
 }
 
 ion-toolbar {
@@ -45,6 +54,7 @@ ion-spinner {
   padding-top: 100px;
   display: block;
   margin: auto;
+  --color: #FFD525;
   
 }
 
@@ -56,10 +66,11 @@ ion-spinner {
 }
 
 .quotes {
+  position: relative;
+  top: 25%;
   font-style: italic;
   color: white;
   font-size: 20px;
   text-align: center;
   letter-spacing: -1.5px;
-  padding-top: 64px;
 }

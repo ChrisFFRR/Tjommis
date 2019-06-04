@@ -25,10 +25,11 @@
     <ion-textarea color="primary" slot="primary">
       Vi matcher deg!
     </ion-textarea>
-
-    <ion-item class=loadingSpinner *ngIf="lobbyName==''">
+    <div class="meatspin">
+    <ion-item lines="none" class=loadingSpinner *ngIf="lobbyName==''">
       <ion-spinner name="crescent"></ion-spinner>
     </ion-item>
+    </div>
 
     <ion-item class = "lobbyUsers"  *ngIf="lobbyName!=''">
       <ion-textarea class="animated animation-duration 1s fadeInLeft lobbyUsers"  *ngFor="let member of members">

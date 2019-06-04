@@ -55,7 +55,7 @@ export class LoadingPage implements OnInit {
 
   ngOnInit() {
     if (this.tjommisHub.getConnectionState() == 0) {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/loading");
     }
     const quoteObservable = interval(3000);
  
