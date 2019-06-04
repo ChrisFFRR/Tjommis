@@ -66,7 +66,8 @@ ion-spinner {
 }
 
 .quotes {
-  position: relative;
+  display: grid;
+  vertical-align: center;
   top: 25%;
   font-style: italic;
   color: white;

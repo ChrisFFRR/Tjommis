@@ -111,7 +111,7 @@ export class TjommisHubService {
             console.log('message: ', message, 'user:', user);
         });
         hubConnection.on('infoConnectEvent', (connectioninfo: ConnectionInfo) => {
-            console.log('infoConncetEvent', connectioninfo);
+            console.log('infoConnectEvent', connectioninfo);
             this.connectionInfo = connectioninfo;
             this.events.publish('username', connectioninfo.userInfo.username);
         });
