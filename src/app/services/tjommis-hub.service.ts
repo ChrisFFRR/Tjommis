@@ -43,7 +43,7 @@ export class TjommisHubService {
                 return true;
             }
         }).catch(err => {
-            console.log("UpdateInterests failed", err)
+            console.log("UpdateInterests failed", err);
             return false;
         });
         console.log("Update interest function complete.");

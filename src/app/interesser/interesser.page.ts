@@ -1,6 +1,6 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { Router } from "@angular/router";
-import { TjommisHubService, InterestItem } from "../services/tjommis-hub.service";
+import {Component, OnInit, NgZone} from '@angular/core';
+import {Router} from "@angular/router";
+import {TjommisHubService, InterestItem} from "../services/tjommis-hub.service";
 
 
 @Component({
@@ -23,6 +23,7 @@ export class InteresserPage implements OnInit {
         public zone: NgZone
     ) {
     }
+
     public isTagSelected(tag: InterestItem): boolean {
         if (this.selectedTags.includes(tag.name)) return true;
         return false;
@@ -50,21 +51,19 @@ export class InteresserPage implements OnInit {
         });
     }
 
-    addTag(tag : InterestItem) {
+    addTag(tag: InterestItem) {
         console.log("addTag");
         this.zone.run(() => {
             this.selectedTags.includes(tag.name) ? this.selectedTags = this.selectedTags.filter(e => e != tag.name) : this.selectedTags.push(tag.name);
-            console.log(this.selectedTags);
+            console.log("Selected tags: ", this.selectedTags);
         });
     }
+
     saveInterests() {
-        if (this.tjommisHub.updateInterests(this.selectedTags)) {
-            this.router.navigateByUrl('/profile');
-        }
-        else {
-            console.log("Could not update interests");
-        }
+        this.tjommisHub.updateInterests(this.selectedTags);
+        this.router.navigateByUrl('/profile');
     }
+
     ngOnInit() {
     }
 }
