@@ -35,6 +35,7 @@ export class ProfilePage implements OnInit {
   onUpdateConnectedUsers = number => {
     this.zone.run(() => {
       this.connectedUsers = number;
+      console.log("connected users: ", number)
     });
   };
 
