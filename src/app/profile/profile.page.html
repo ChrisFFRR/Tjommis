@@ -8,15 +8,15 @@
                              src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
                     </ion-avatar>
                     <ion-label>
-                        <h4 class="user_name">{{username}} ({{connectedusers}})</h4>
+                        <h4 class="user_name">{{username}}</h4>
                     </ion-label>
                 </ion-item>
             </ion-col>
         </ion-row>
-        <ion-row>
+
+        <ion-row *ngFor="let lobby of lobbies">
             <ion-col class="quote_container" text-center>
-                <h3 class="lame_quote">"A friend is someone who gives you total freedom to be yourself."</h3>
-                <p class="lame_quote_name">Jim Morrison</p>
+                <p class="lobby">{{lobby.lobbyName}}</p>
             </ion-col>
         </ion-row>
     </ion-grid>

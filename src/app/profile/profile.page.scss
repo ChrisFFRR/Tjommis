@@ -69,6 +69,15 @@ ion-button {
   .info_hangout_btn {
     margin: 0;
   }
+
+  .lobby {
+    background: var(--ion-color-secondary-contrast);
+    border-radius: 5px;
+ 
+    border: 2px var(--ion-color-border) solid;
+    cursor: pointer;
+  }
+
   .lame_quote, .lame_quote_name, .interesse_btn_txt, .info_hangout_btn{
     font-size: 20px;
     color: whitesmoke;
