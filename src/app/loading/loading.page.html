@@ -22,7 +22,7 @@
       {{randomQuote}}
     </ion-textarea>
 
-    <ion-textarea class="animated infinite bounce delay-2s" color="primary" slot="primary">
+    <ion-textarea color="primary" slot="primary">
       Vi matcher deg!
     </ion-textarea>
 
@@ -30,8 +30,8 @@
       <ion-spinner name="crescent"></ion-spinner>
     </ion-item>
 
-    <ion-item *ngIf="lobbyName!=''">
-      <ion-textarea *ngFor="let member of members">
+    <ion-item class = "lobbyUsers"  *ngIf="lobbyName!=''">
+      <ion-textarea class="animated animation-duration 1s fadeInLeft lobbyUsers"  *ngFor="let member of members">
         {{member.username}}
       </ion-textarea>
     </ion-item>
