@@ -17,7 +17,7 @@ export class LoadingPage implements OnInit {
   public timeRunning: number;
   public lobbyName: string = '';
   public members: ExternalUser[] = [];
-  public quotes: string[] = ["I DECLARE....BANKRUPCTY - Michael Scott", "Livets harde skole","ppPPølserrr - Tangerudbakken","booyaahh!"];
+  public quotes: string[] = ["Nei, dette er ikke Tinder for studenter.", "Scrum, where the rules are made up and the points dont matter","Jeg vil ha to is.",""];
   public randomQuote:string = '';
 
   constructor(
