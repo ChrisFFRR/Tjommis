@@ -1,12 +1,11 @@
 ion-content {
   --background: var(--ion-background-color);
-  --padding-bottom: 150px;
+  --padding-bottom: 60px;
 }
 
 ion-content ion-list {
   --ion-background-color: rgba(0,0,0,0);
 }
-
 ion-list {
   --background-color: rgba(0,0,0,0);
   background-color: rgba(0,0,0,0);
@@ -20,12 +19,6 @@ ion-toolbar{
   --height: 75px;
 }
 
-
-ion-footer {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-}
 
 ion-back-button.button {
   --color: var(--ion-color-border);
