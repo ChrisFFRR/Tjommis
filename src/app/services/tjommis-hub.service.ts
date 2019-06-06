@@ -40,6 +40,7 @@ export class TjommisHubService {
             console.log("Response",r);
             if (r != null) {
                 this.connectionInfo = r;
+                this.events.publish("updateinterests");
                 return true;
             }
         }).catch(err => {
@@ -50,7 +51,7 @@ export class TjommisHubService {
         return false;
     }
     // Connect method for SignalR
-    // Returns: Promise(resolve, reject)
+    // Returns: Promise(resolve, reject")
     connect(accesstoken) {
         return new Promise((resolve, reject) => {
             // If allready connected from earlier sessions, disconnect and reconnect

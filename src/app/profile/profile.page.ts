@@ -1,8 +1,9 @@
-import {Component, NgZone, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Events} from "@ionic/angular";
-import {ExternalUser, Lobby, TjommisHubService} from "../services/tjommis-hub.service";
+import { Component, NgZone, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { Events } from "@ionic/angular";
+import { ExternalUser, Lobby, TjommisHubService, User, InterestItem } from "../services/tjommis-hub.service";
 import anime from 'animejs';
+import { InteresserPage } from '../interesser/interesser.page';
 
 
 @Component({
@@ -26,23 +27,18 @@ export class ProfilePage implements OnInit {
             console.log("Profile.OnUpdateUserName", data);
             this.onUpdateUsername(data);
         });
-
-        events.subscribe("membersLobby", (eventArgs: Lobby) => {
-            this.zone.run(() => {
-                this.lobbyMembers = eventArgs.members;
-                console.log("lobby member: " + this.lobbyMembers);
-            });
+        this.events.subscribe('updateinterests', (data) => {
+            console.log("Profile.OnUpdateUserName", data);
+            this.onUpdateInterests(data);
         });
+
+    
     }
 
     lobbies: Lobby[] = this.tjommisHub.rooms ? this.tjommisHub.rooms : [];
     username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
     connectedUsers: number = 0;
-
-    lobbyMembers: ExternalUser[] = [];
-    hasStartedChat: boolean = false;
-
-
+    myinterests: string[] = this.tjommisHub.connectionInfo.userInfo ? this.tjommisHub.connectionInfo.userInfo.interests : [];
 
     onUpdateConnectedUsers = number => {
         this.zone.run(() => {
@@ -54,6 +50,13 @@ export class ProfilePage implements OnInit {
     onUpdateUsername = username => {
         this.zone.run(() => {
             this.username = username;
+
+        });
+    };
+
+    onUpdateInterests = () => {
+        this.zone.run(() => {
+            this.myinterests = this.tjommisHub.connectionInfo.userInfo.interests;
         });
     };
 
@@ -75,7 +78,6 @@ export class ProfilePage implements OnInit {
             /* Todo: SnackBar feilmelding til bruker */
             console.log("Hangout failed: ", e);
         });
-        this.hasStartedChat = true;
     }
 
     sanitateName(name) {

@@ -15,10 +15,10 @@
         </ion-row>
 
 
-        <ion-textarea color="light" *ngIf="hasStartedChat == false">Her vil dine lobbyer vises!</ion-textarea>
-        <ion-textarea color="light" *ngIf="hasStartedChat == true">Her er dine aktive lobbyer!</ion-textarea>         
-       
-  <ion-card class="lobby" *ngFor="let lobby of lobbies">
+        <ion-textarea color="light" *ngIf="lobbies.length == 0">Her vil dine lobbyer vises!</ion-textarea>
+        <ion-textarea color="light" *ngIf="lobbies.length > 0">Her er dine aktive lobbyer!</ion-textarea>
+
+        <ion-card class="lobby" *ngFor="let lobby of lobbies">
             <ion-card-title>
                 {{sanitateName(lobby.lobbyName)}}
             </ion-card-title>
@@ -26,11 +26,12 @@
                 <ion-col *ngFor="let member of lobby.members">{{member.username}}</ion-col>
             </ion-card-subtitle>
         </ion-card>
-   <ion-textarea color="light">Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
+
 
     </ion-grid>
 
     <ion-footer mode="ios">
+        <ion-textarea color="light" *ngIf="myinterests.length == 0">Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
         <ion-row class="btn_row">
             <ion-col text-center>
                 <span (click)="animateClick()" class="chatWrapper">
