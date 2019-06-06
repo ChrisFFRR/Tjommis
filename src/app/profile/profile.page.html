@@ -14,16 +14,20 @@
             </ion-col>
         </ion-row>
 
-        <ion-textarea color="light" *ngIf="hasStartedChat == false">Her vil dine lobbyer vises!</ion-textarea>
-        
-        <ion-col *ngFor="let lobby of lobbies">
-            <ion-textarea color="light" *ngIf="hasStartedChat == true">Her er dine aktive lobbyer!</ion-textarea>
-            <ion-row class="quote_container" text-center>
-                <p class="lobby">{{lobby.lobbyName}}</p>
-            </ion-row>
-        </ion-col>
 
-        <ion-textarea color="light">Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
+        <ion-textarea color="light" *ngIf="hasStartedChat == false">Her vil dine lobbyer vises!</ion-textarea>
+        <ion-textarea color="light" *ngIf="hasStartedChat == true">Her er dine aktive lobbyer!</ion-textarea>         
+       
+  <ion-card class="lobby" *ngFor="let lobby of lobbies">
+            <ion-card-title>
+                {{sanitateName(lobby.lobbyName)}}
+            </ion-card-title>
+            <ion-card-subtitle>
+                <ion-col *ngFor="let member of lobby.members">{{member.username}}</ion-col>
+            </ion-card-subtitle>
+        </ion-card>
+   <ion-textarea color="light">Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
+
     </ion-grid>
 
     <ion-footer mode="ios">
