@@ -1,7 +1,7 @@
-import {Component, NgZone, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
-import {Events} from "@ionic/angular";
-import {ExternalUser, Lobby, TjommisHubService} from "../services/tjommis-hub.service";
+import {Events, IonContent} from "@ionic/angular";
+import {Lobby, TjommisHubService} from "../services/tjommis-hub.service";
 import anime from 'animejs';
 
 
@@ -11,7 +11,7 @@ import anime from 'animejs';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+    @ViewChild(IonContent) content: IonContent;
     constructor(
         public router: Router,
         public tjommisHub: TjommisHubService,
@@ -27,20 +27,11 @@ export class ProfilePage implements OnInit {
             this.onUpdateUsername(data);
         });
 
-        events.subscribe("membersLobby", (eventArgs: Lobby) => {
-            this.zone.run(() => {
-                this.lobbyMembers = eventArgs.members;
-                console.log("lobby member: " + this.lobbyMembers);
-            });
-        });
     }
 
     lobbies: Lobby[] = this.tjommisHub.rooms ? this.tjommisHub.rooms : [];
     username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
     connectedUsers: number = 0;
-
-    lobbyMembers: ExternalUser[] = [];
-    hasStartedChat: boolean = false;
 
 
 
@@ -75,7 +66,6 @@ export class ProfilePage implements OnInit {
             /* Todo: SnackBar feilmelding til bruker */
             console.log("Hangout failed: ", e);
         });
-        this.hasStartedChat = true;
     }
 
     sanitateName(name) {
