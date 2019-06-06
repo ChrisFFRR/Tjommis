@@ -1,7 +1,8 @@
-import { Component, NgZone, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { Events } from "@ionic/angular";
-import { ExternalUser, Lobby, TjommisHubService, User, InterestItem } from "../services/tjommis-hub.service";
+
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Router} from "@angular/router";
+import {Events, IonContent} from "@ionic/angular";
+import {Lobby, TjommisHubService} from "../services/tjommis-hub.service";
 import anime from 'animejs';
 import { InteresserPage } from '../interesser/interesser.page';
 
@@ -12,7 +13,7 @@ import { InteresserPage } from '../interesser/interesser.page';
     styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-
+    @ViewChild(IonContent) content: IonContent;
     constructor(
         public router: Router,
         public tjommisHub: TjommisHubService,
@@ -27,18 +28,20 @@ export class ProfilePage implements OnInit {
             console.log("Profile.OnUpdateUserName", data);
             this.onUpdateUsername(data);
         });
+
         this.events.subscribe('updateinterests', (data) => {
             console.log("Profile.OnUpdateUserName", data);
             //this.onUpdateInterests(data);
         });
-
-    
     }
 
     lobbies: Lobby[] = this.tjommisHub.rooms ? this.tjommisHub.rooms : [];
     username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
     connectedUsers: number = 0;
+
     myinterests: string[] = this.tjommisHub.connectionInfo.userInfo ? this.tjommisHub.connectionInfo.userInfo.interests : [];
+
+
 
     onUpdateConnectedUsers = number => {
         this.zone.run(() => {
