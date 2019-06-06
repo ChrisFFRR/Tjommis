@@ -14,11 +14,14 @@
             </ion-col>
         </ion-row>
 
-        <ion-row *ngFor="let lobby of lobbies">
-            <ion-col class="quote_container" text-center>
-                <p class="lobby">{{lobby.lobbyName}}</p>
-            </ion-col>
-        </ion-row>
+        <ion-card class="lobby" *ngFor="let lobby of lobbies">
+            <ion-card-title>
+                {{sanitateName(lobby.lobbyName)}}
+            </ion-card-title>
+            <ion-card-subtitle>
+                <ion-col *ngFor="let member of lobby.members">{{member.username}}</ion-col>
+            </ion-card-subtitle>
+        </ion-card>
     </ion-grid>
 
     <ion-footer mode="ios">
