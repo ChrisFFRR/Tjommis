@@ -14,6 +14,15 @@ ion-footer {
     padding: 0;
   }
 }
+ion-textarea{
+padding-top: 0px;
+padding-bottom: 3px;
+}
+
+ion-row {
+  padding-top: 0px;
+  padding-bottom: 3px;
+}
 
 span.chatWrapper {
   display: inline-block;
@@ -53,8 +62,8 @@ ion-button {
 
   }
 
-.user_col, .quote_container{
-
+.quote_container{
+  padding: 0;
 }
 
 .user_col {

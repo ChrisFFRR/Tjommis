@@ -38,7 +38,10 @@ export class ProfilePage implements OnInit {
     lobbies: Lobby[] = this.tjommisHub.rooms ? this.tjommisHub.rooms : [];
     username: string = this.tjommisHub.connectionInfo ? this.tjommisHub.connectionInfo.userInfo.username : null;
     connectedUsers: number = 0;
+
     lobbyMembers: ExternalUser[] = [];
+    hasStartedChat: boolean = false;
+
 
 
     onUpdateConnectedUsers = number => {
@@ -72,6 +75,7 @@ export class ProfilePage implements OnInit {
             /* Todo: SnackBar feilmelding til bruker */
             console.log("Hangout failed: ", e);
         });
+        this.hasStartedChat = true;
     }
 
     sanitateName(name) {
