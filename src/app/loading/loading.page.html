@@ -5,36 +5,51 @@
   </head>
 </head>
 
-  <ion-header no-border>
-    <ion-toolbar mode="ios">
-        <ion-buttons slot="start">
-            <ion-back-button class="button" defaultHref="/profile"></ion-back-button>
-        </ion-buttons>
-        <ion-title>
-            <img class="logoPic" alt="company_logo" src="../../assets/img/logoalenegul.png"/>
-        </ion-title>
-    </ion-toolbar>
+<ion-header no-border>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button class="button" defaultHref="/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <img class="logoPic" alt="company_logo" src="../../assets/img/logoalenegul.png" />
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
-  <ion-content>
+<ion-content>
 
-    <ion-textarea class=quotes>
-      {{randomQuote}}
-    </ion-textarea>
+  <ion-grid>
 
-    <ion-textarea color="primary" slot="primary">
-      Vi matcher deg!
-    </ion-textarea>
-    <div class="meatspin">
-    <ion-item lines="none" class=loadingSpinner *ngIf="lobbyName==''">
-      <ion-spinner name="crescent"></ion-spinner>
-    </ion-item>
-    </div>
-
-    <ion-item class = "lobbyUsers"  *ngIf="lobbyName!=''">
-      <ion-textarea class=""  *ngFor="let member of members">
-        {{member.username}}
+    <ion-col>
+      <ion-textarea class=quotes>
+        {{randomQuote}}
       </ion-textarea>
-    </ion-item>
+      <ion-textarea color="light">
+          Vi matcher deg {{username}}!
+        </ion-textarea>
+    </ion-col>
 
-  </ion-content>
+
+    <ion-row>
+      <div class="meatspin">
+        <ion-item lines="none" class=loadingSpinner *ngIf="lobbyName==''">
+          <ion-spinner name="crescent"></ion-spinner>
+        </ion-item>
+      </div>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-item class="lobbyUsers" *ngIf="lobbyName!=''">
+
+        <ion-textarea *ngFor="let member of members">
+          
+        </ion-textarea>
+      </ion-item>
+
+    </ion-row>
+
+
+  </ion-grid>
+
+</ion-content>

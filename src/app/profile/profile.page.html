@@ -15,10 +15,12 @@
     </ion-row>
 </ion-grid>
 
+
 <ion-content padding [scrollEvents]="true" scrollX="true">
     <ion-textarea color="light" *ngIf="lobbies.length == 0">Her vil dine lobbyer vises!</ion-textarea>
     <ion-textarea color="light" *ngIf="lobbies.length > 0">Her er dine aktive lobbyer!</ion-textarea>
-        <ion-card class="lobby" *ngFor="let lobby of lobbies">
+      
+  <ion-card class="lobby" *ngFor="let lobby of lobbies">
             <ion-card-title>
                 <h5 class="cardTitle">{{sanitateName(lobby.lobbyName)}}</h5>
             </ion-card-title>
@@ -27,6 +29,11 @@
                 <ion-col *ngFor="let member of lobby.members">{{member.username}}</ion-col>
             </div>
         </ion-card>
+
+
+    
+        <ion-textarea color="light" *ngIf="myinterests.length == 0" text-center>Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
+        <ion-textarea color="light" *ngIf="myinterests.length != 0" text-center>Click for å matche med én eller flere!</ion-textarea>
 </ion-content>
 
     <div class="footer">
