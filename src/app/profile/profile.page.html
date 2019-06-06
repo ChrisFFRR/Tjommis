@@ -31,7 +31,8 @@
     </ion-grid>
 
     <ion-footer mode="ios">
-        <ion-textarea color="light" *ngIf="myinterests.length == 0">Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
+        <ion-textarea color="light" *ngIf="myinterests.length == 0" text-center>Velg hva du interesserer deg for og klikk for å matche</ion-textarea>
+        <ion-textarea color="light" *ngIf="myinterests.length != 0" text-center>Click for å matche med én eller flere!</ion-textarea>
         <ion-row class="btn_row">
             <ion-col text-center>
                 <span (click)="animateClick()" class="chatWrapper">

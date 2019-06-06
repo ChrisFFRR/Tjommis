@@ -29,7 +29,7 @@ export class ProfilePage implements OnInit {
         });
         this.events.subscribe('updateinterests', (data) => {
             console.log("Profile.OnUpdateUserName", data);
-            this.onUpdateInterests(data);
+            //this.onUpdateInterests(data);
         });
 
     
