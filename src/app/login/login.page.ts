@@ -25,8 +25,8 @@ export class LoginPage implements OnInit {
                 public formBuilder: FormBuilder,) {
 
         this.loginFormGroup = formBuilder.group({
-            username: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-            password: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
+            username: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9]*'), Validators.required])],
+            password: ['',Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z0-9]*'), Validators.required])],
             affiliation:['']
         })
     }
