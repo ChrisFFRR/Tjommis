@@ -27,7 +27,10 @@ export class TjommisHubService {
     constructor(public events: Events,
         public authService: AuthServiceService,) {}
 
-        
+    enterLobby(lobby: Lobby) {
+        console.log("TjommisHub: Entering lobby:",lobby);
+        this.hubConnection.send("EnterLobby",this.connectionInfo.userInfo, lobby);
+    } 
     SendMessage(message) {
         this.hubConnection.send('SendMessage',this.activeRoom.lobbyName,message);
     }
@@ -124,6 +127,12 @@ export class TjommisHubService {
             console.log('Message',lobby, message);
             if (this.activeRoom.lobbyName == lobby) this.activeRoom.messages.push(message);
             this.events.publish('message',lobby,message);
+        });
+        
+        hubConnection.on('enterroom',(room: Lobby) => {
+            console.log("Joining room: ", room);
+            this.activeRoom = room;
+            this.events.publish('joinroom',room);
         });
         hubConnection.on('joinroom',(room: Lobby) => {
             console.log("Joining room: ", room);

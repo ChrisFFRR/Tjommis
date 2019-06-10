@@ -28,6 +28,10 @@ export class ProfilePage implements OnInit {
             console.log("Profile.OnUpdateUserName", data);
             this.onUpdateUsername(data);
         });
+        this.events.subscribe('joinroom', (data) => {
+            console.log("Joining room from profile..", data);
+            this.router.navigateByUrl('/chat');
+        });
 
         this.events.subscribe('updateinterests', (data) => {
             console.log("Profile.OnUpdateUserName", data);
@@ -42,7 +46,9 @@ export class ProfilePage implements OnInit {
     myinterests: string[] = this.tjommisHub.connectionInfo.userInfo ? this.tjommisHub.connectionInfo.userInfo.interests : [];
     interestsInfoTxt = ['Her vil dine lobbyer vises!', 'Her er dine aktive lobbyer!'];
 
-
+    joinLobby = (lobby : Lobby) => {
+        this.tjommisHub.enterLobby(lobby);
+    };
     onUpdateConnectedUsers = number => {
         this.zone.run(() => {
             this.connectedUsers = number;
