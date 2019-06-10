@@ -2,7 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { Events } from '@ionic/angular';
 import { Router } from "@angular/router";
 import { TjommisHubService, ExternalUser, Lobby, HangoutEventMessage } from '../services/tjommis-hub.service';
-import {Observable, interval} from 'rxjs';
+import { Observable, interval } from 'rxjs';
 import { async } from 'q';
 
 @Component({
@@ -17,8 +17,11 @@ export class LoadingPage implements OnInit {
   public timeRunning: number;
   public lobbyName: string = '';
   public members: ExternalUser[] = [];
-  public quotes: string[] = ["Nei, dette er ikke Tinder for studenter.", "Scrum, where the rules are made up and the points dont matter","Jeg vil ha to is.",""];
-  public randomQuote:string = '';
+  public username: string;
+  public matchedWithUsers: ExternalUser[] = [];
+  public quotes: string[] = ["Nei, dette er ikke Tinder for studenter.", "Scrum, where the rules are made up and the points dont matter", "Jeg vil ha to is.", 
+  "I...declare...BANKRUPTCY", "Jobbstilling: Livets harde skole"];
+  public randomQuote: string = '';
 
   constructor(
     public router: Router,
@@ -58,15 +61,27 @@ export class LoadingPage implements OnInit {
       this.router.navigateByUrl("/loading");
     }
     const quoteObservable = interval(3000);
- 
+
     quoteObservable.subscribe((sequence: number) => {
       this.randomQuote = this.randomQuotes();
     });
 
+    this.username = this.userName();
+    this.matchedWithUsers = this.otherLobbyUsers();
+
   }
 
   randomQuotes() {
-    var randomQuote = this.quotes[Math.floor(Math.random()*this.quotes.length)];
+    let randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
     return randomQuote;
   }
+
+  userName() {
+    return this.tjommisHub.connectionInfo.userInfo.username;
+  }
+
+  otherLobbyUsers () {
+    return this.members.filter(m => m.lastname != this.userName());
+  }
+
 }

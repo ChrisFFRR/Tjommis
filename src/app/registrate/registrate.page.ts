@@ -46,7 +46,7 @@ export class RegistratePage implements OnInit {
 
   register() {
     this.isPosting = true;
-    var newUser = {
+    let newUser = {
       name: this.username,
       lastname: this.lastName,
       password: this.password,

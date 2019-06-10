@@ -3,17 +3,24 @@ ion-content {
   --padding-bottom: 150px;
 }
 
+ion-row {
+  align-content: center;
+}
+
+ion-spinner {
+  display: block;
+  margin: auto;
+  align-content: center;
+  flex-direction: column;
+}
+
 
 
 
 ion-textarea {
   --background: rgba(0, 0, 0, 0);
 }
-.meatspin{
-  display: grid;
-  align-content: center;
-  vertical-align: center;
-}
+
 ion-item {
   --background: rgba(0, 0, 0, 0);
 

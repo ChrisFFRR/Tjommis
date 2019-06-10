@@ -66,6 +66,10 @@ export class InteresserPage implements OnInit {
 
     ngOnInit() {
     }
+
+    getTagsStatus() {
+        return this.tags.size > 0;
+    }
 }
 
 /*

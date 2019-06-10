@@ -36,7 +36,7 @@ export class ChatPage implements OnInit {
     // Update messages
     this.zone.run(() => {
       this.messages = this.tjommisHub.activeRoom.messages;
-      this.content.scrollToBottom(300);
+      this.content.scrollToBottom();
     })
   };
 
@@ -48,5 +48,6 @@ export class ChatPage implements OnInit {
   ngOnInit() {
     if (this.tjommisHub.getConnectionState() == 0) this.router.navigateByUrl('/login');
   }
+
 
 }
