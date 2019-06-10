@@ -34,10 +34,10 @@
         <p *ngIf="myinterests.length > 0" text-center>Klikk for å matche med én eller flere!</p>
         <ion-row class="btn_row">
             <ion-col text-center>
-                <span (click)="animateClick()" class="chatWrapper">
+                <span (click)="chatSingle()" class="chatWrapper">
                     <img class="chat_private" src="../../assets/img/ChatPrivate.png">
                 </span>
-                <img class="chat_group" src="../../assets/img/chatGroup.png" (click)="chats()">
+                <img class="chat_group" src="../../assets/img/chatGroup.png" (click)="chatGroup()">
             </ion-col>
         </ion-row>
         <ion-row class="interesse_row">

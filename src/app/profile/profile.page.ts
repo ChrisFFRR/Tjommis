@@ -80,8 +80,16 @@ export class ProfilePage implements OnInit {
         this.router.navigateByUrl('/interesser')
     }
 
-    chat() {
-        this.tjommisHub.Hangout().then(e => {
+    chatGroup() {
+        this.tjommisHub.HangoutGroup().then(e => {
+            if (e) this.router.navigateByUrl('/loading');
+        }).catch(e => {
+            /* Todo: SnackBar feilmelding til bruker */
+            console.log("Hangout failed: ", e);
+        });
+    }
+    chatSingle() {
+        this.tjommisHub.HangoutSingle().then(e => {
             if (e) this.router.navigateByUrl('/loading');
         }).catch(e => {
             /* Todo: SnackBar feilmelding til bruker */
@@ -110,7 +118,7 @@ export class ProfilePage implements OnInit {
                 delay: 268
             },
             complete: () => {
-                this.chat()
+                this.chatSingle()
             }
         });
     }

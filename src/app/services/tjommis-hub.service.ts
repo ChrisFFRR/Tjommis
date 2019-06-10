@@ -34,9 +34,13 @@ export class TjommisHubService {
     SendMessage(message) {
         this.hubConnection.send('SendMessage',this.activeRoom.lobbyName,message);
     }
-    Hangout()  {
-        return this.hubConnection.invoke('TestHangout');
+    HangoutGroup()  {
+        return this.hubConnection.invoke('HangoutGroup');
     }
+    HangoutSingle()  {
+        return this.hubConnection.invoke('HangoutSingle');
+    }
+
     updateInterests(interestList : string[]) : boolean {
         console.log("updating interests:", interestList);
         this.hubConnection.invoke("UpdateInterests",interestList).then(r=> {
