@@ -35,9 +35,11 @@ export class TjommisHubService {
         this.hubConnection.send('SendMessage',this.activeRoom.lobbyName,message);
     }
     HangoutGroup()  {
+        console.log("Request Hangout: Group");
         return this.hubConnection.invoke('HangoutGroup');
     }
     HangoutSingle()  {
+        console.log("Request Hangout: Single")
         return this.hubConnection.invoke('HangoutSingle');
     }
 

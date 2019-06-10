@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 </head>
 
 <ion-header no-border>
@@ -19,17 +19,18 @@
       Vi matcher deg!
     </ion-textarea>
     <div class="meatspin">
-    <ion-item lines="none" class=loadingSpinner *ngIf="lobbyName==''">
-      <ion-spinner name="crescent"></ion-spinner>
-    </ion-item>
+      <ion-item lines="none" class=loadingSpinner *ngIf="lobbyName==''">
+        <ion-spinner name="crescent"></ion-spinner>
+      </ion-item>
     </div>
-      <div class="wrapper">
-    <ion-item class ="lobbyUsers"  *ngIf="lobbyName!=''">
+    <div class="wrapper">
+      <ion-item class="lobbyUsers" *ngIf="lobbyName!=''">
         <ion-card mode="ios">
-      <ion-textarea class="user"  *ngFor="let member of members">
-        {{member.username}}
-      </ion-textarea>
+          <ion-textarea class="user" *ngFor="let member of members">
+            {{member.username}}
+          </ion-textarea>
         </ion-card>
-    </ion-item>
-      </div>
-  </ion-content>
+      </ion-item>
+    </div>
+  </ion-grid>
+</ion-content>
