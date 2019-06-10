@@ -2,11 +2,8 @@
   background: var(--ion-background-color);
 }
 
-
-
 ion-content {
-
-  --padding-bottom: 2em;
+  height: 16em;
   --ion-background-color: rgba(0,0,0,0);
 }
 
@@ -20,6 +17,9 @@ ion-item {
   background-color: rgba(0,0,0,0);
   ion-col {
     padding: 0;
+  }
+  p {
+    margin: 0;
   }
 }
 
@@ -79,7 +79,6 @@ ion-button {
   margin-left: 0;
   flex: 0;
 }
-
 
 .user_col {
   margin-bottom: 0;
