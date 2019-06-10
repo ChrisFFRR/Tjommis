@@ -18,8 +18,8 @@
 
 <ion-content padding [scrollEvents]="true" scrollX="true">
     <p text-center *ngIf="lobbies.length == 0 ">Her vil dine lobbyer vises!</p>
-  <ion-card class="lobby" *ngFor="let lobby of lobbies">
-            <ion-card-title (click)="joinLobby(lobby)">
+  <ion-card class="lobby" (click)="joinLobby(lobby)" *ngFor="let lobby of lobbies">
+            <ion-card-title>
                 <h5 class="cardTitle">{{sanitateName(lobby.lobbyName)}}</h5>
             </ion-card-title>
              <p>du snakker med:</p>

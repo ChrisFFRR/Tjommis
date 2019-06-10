@@ -1,6 +1,9 @@
 ion-content {
   --background: var(--ion-background-color);
-  --padding-bottom: 150px;
+  h5 {
+    color: var(--ion-color-border);
+    text-align: center;
+  }
 }
 
 ion-row {
@@ -14,17 +17,8 @@ ion-spinner {
   flex-direction: column;
 }
 
-
-
-
-ion-textarea {
-  --background: rgba(0, 0, 0, 0);
-}
-
 ion-item {
   --background: rgba(0, 0, 0, 0);
-
-
 }
 
 ion-toolbar {

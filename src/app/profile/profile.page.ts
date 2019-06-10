@@ -75,7 +75,6 @@ export class ProfilePage implements OnInit {
             this.router.navigateByUrl("/login");
         }
     }
-
     interesser() {
         this.router.navigateByUrl('/interesser')
     }

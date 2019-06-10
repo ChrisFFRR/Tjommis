@@ -7,7 +7,9 @@ ion-card {
 }
 
 ion-content {
-  height: 14em;
+  //Fucker posisjon på web, men funker på mobil.
+ height: 22em;
+  //
   --ion-background-color: rgba(0,0,0,0);
   p {
     color: var(--ion-color-secondary-contrast);
