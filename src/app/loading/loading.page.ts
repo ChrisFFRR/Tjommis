@@ -42,7 +42,6 @@ export class LoadingPage implements OnInit {
         this.totalUsers = eventArgs.totalUsers;
         this.timeRunning = eventArgs.timeRunning;
         this.members = eventArgs.room.members;
-
       });
     });
 
@@ -73,7 +72,7 @@ export class LoadingPage implements OnInit {
   }
 
   randomQuotes() {
-    var randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
+    let randomQuote = this.quotes[Math.floor(Math.random() * this.quotes.length)];
     return randomQuote;
   }
 
