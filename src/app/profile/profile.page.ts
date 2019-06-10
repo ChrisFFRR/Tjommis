@@ -44,7 +44,7 @@ export class ProfilePage implements OnInit {
     connectedUsers: number = 0;
 
     myinterests: string[] = this.tjommisHub.connectionInfo.userInfo ? this.tjommisHub.connectionInfo.userInfo.interests : [];
-    interestsInfoTxt = ['Her vil dine lobbyer vises!', 'Her er dine aktive lobbyer!'];
+
 
     joinLobby = (lobby : Lobby) => {
         this.tjommisHub.enterLobby(lobby);
@@ -75,7 +75,6 @@ export class ProfilePage implements OnInit {
             this.router.navigateByUrl("/login");
         }
     }
-
     interesser() {
         this.router.navigateByUrl('/interesser')
     }

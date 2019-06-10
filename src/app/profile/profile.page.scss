@@ -2,9 +2,18 @@
   background: var(--ion-background-color);
 }
 
+ion-card {
+  margin-top: 0;
+}
+
 ion-content {
-  height: 16em;
+  //Fucker posisjon på web, men funker på mobil.
+ height: 22em;
+  //
   --ion-background-color: rgba(0,0,0,0);
+  p {
+    color: var(--ion-color-secondary-contrast);
+  }
 }
 
 ion-item {
@@ -13,13 +22,19 @@ ion-item {
 }
 
 .footer {
-
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 1em;
   background-color: rgba(0,0,0,0);
   ion-col {
     padding: 0;
   }
   p {
     margin: 0;
+    color: var(--ion-color-secondary-contrast);
+
   }
 }
 
@@ -28,6 +43,7 @@ span.chatWrapper {
 }
 
 ion-card {
+  margin-bottom: 2px;
   p {
     margin: 0 0 0 7px;
      color: var(--ion-color-secondary-contrast);
