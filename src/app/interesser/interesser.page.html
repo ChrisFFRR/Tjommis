@@ -21,16 +21,12 @@
 
     <ion-grid class="tagsGrid">
         <ion-row >
-            <ion-col  *ngFor="let tag of tags" text-center>
-
-            <ion-button
-                size="small"
-                fill="outline"
+            <ion-col text-center align-self-center size="6"  *ngFor="let tag of tags" text-center>
+            <div
                 [ngClass]="isTagSelected(tag) ? 'tagsBtnSelected' : 'tagsBtn'"
                 (click)="addTag(tag);">
-                {{ tag.name }}
-            </ion-button>
-
+                <span>{{ tag.name }}</span>
+            </div>
             </ion-col>
         </ion-row>
     </ion-grid>

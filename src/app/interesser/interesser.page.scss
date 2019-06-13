@@ -18,29 +18,44 @@ ion-back-button.button {
   -webkit-margin-end: 0 !important;
 }
 
-.categoryGrid, .tagsGrid {
+.categoryGrid{
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+
 }
 
 .kategoriBtn {
   min-width: 120.036px;
 }
 
+.tagsBtn, .tagsBtnSelected {
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 66px;
+  min-width: 66px;
+  border-radius: 20px;
+  cursor: pointer;
+  span {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+}
+
 .tagsBtn {
-  --background: rgba(0,0,0,0);
-  --border-style: solid !important;
-  --border-width: 2px !important;
-  --border-color: var(--ion-color-border) !important;
-  --color: var(--ion-color-secondary-contrast) !important;
+  background: rgba(0,0,0,0);
+  border: 2px solid var(--ion-color-border)!important;
+  color: var(--ion-color-secondary-contrast) !important;
 }
 .tagsBtnSelected {
-  --background: var(--ion-color-border);
-  --border-style: solid !important;
-  --border-width: 2px !important;
-  --border-color: var(--ion-color-border) !important;
-  --color: black !important;
+  font-weight: bold;
+  background: var(--ion-color-border);
+  border: 2px solid var(--ion-color-border);
+  text-decoration: underline  #8151A8;
+
+
+  color: black;
 }
 
 .lagreBtn {
