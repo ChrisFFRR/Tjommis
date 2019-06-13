@@ -68,6 +68,7 @@ ion-spinner {
   position: relative;
   top: 55%;
   align-content: center;
+  --font-color: #FFD525;
 
 }
 .slide-in-left {
@@ -117,6 +118,8 @@ ion-spinner {
   display: block;
   margin: auto;
   --color: #FFD525;
+  color: #FFD525;
+
 }
 
 .lobbyUsers {
@@ -125,7 +128,10 @@ ion-spinner {
   text-align: center;
   letter-spacing: -1px;
 }
-
+.textcol{
+  --color: #FFD525;
+  color: #FFD525;
+}
 .quotes {
   display: grid;
   vertical-align: center;
