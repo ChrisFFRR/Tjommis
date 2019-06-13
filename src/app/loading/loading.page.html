@@ -15,19 +15,23 @@
 
 <ion-content>
     <h5>Vi matcher deg!</h5>
-    <div class="meatspin">
-      <ion-item lines="none" class=loadingSpinner *ngIf="lobbyName==''">
-        <ion-spinner name="crescent"></ion-spinner>
+    <div class="faenihelvete">
+      <ion-item lines="none" class=loadingSpinner >
+        <ion-spinner name="crescent" height='500px' width='100px'></ion-spinner>
       </ion-item>
     </div>
     <div class="wrapper">
-      <ion-item class="lobbyUsers" *ngIf="lobbyName!=''">
-        <ion-card mode="ios">
-          <ion-textarea class="user" *ngFor="let member of members">
-            {{member.username}}
+        <ion-grid>
+            <ion-row>
+                <ion-item no-lines="none" lines="none"  class="lobbyUsers slide-in-left" *ngIf="lobbyName!=''">
+                    <ion-col>
+          <ion-textarea lines="none" class="user" *ngFor="let member of members">
+            {{member.username}} har blitt med i samtalen
           </ion-textarea>
-        </ion-card>
+                    </ion-col>
       </ion-item>
+
+            </ion-row>
+        </ion-grid>
     </div>
-  </ion-grid>
 </ion-content>
